@@ -8,7 +8,7 @@ nbproject/
 *.db
 *.swp
 /media/profile/*.*
-biodiversity/static_media/noticiasfotos/
+/static_media/attachments/
 *.swp
 /media/profile/*.*
 *.pdf
