@@ -44,5 +44,5 @@ tinyMCE.init({
     // Example word content CSS (should be your site CSS) this one removes paragraph margins
     content_css : "/static_media/js/tiny_mce/css/word.css",
     height: "400",
-    width: "650"
+    width: "700"
 });

@@ -100,12 +100,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'django.contrib.comments',
     'livesettings',
     'keyedcache',
     'south',
     'addac.tagging',
     'addac.extras',
     'addac.noticias',
+    'addac.paginas',
     # Uncomment the next line to enable the admin:
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
