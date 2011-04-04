@@ -1,38 +1,38 @@
 {% load tree_menu_tags %}
 
-<!--MENU PRINCIPAL PROPIO DE CIEETS-->
+<!--MENU PRINCIPAL DE ADDAC-->
 {% ifequal menu_type "menu-principal" %}
-<ul class="nivel1" id="nav">
-    {% for menu_item in menu.root_item.children %}    
+ <ul id="nav" class="dropdown dropdown-linear">
+    {% for menu_item in menu.root_item.children %}
     {% if menu_item.has_children %}
-    <li><a class="lvl1" href="{{ menu_item.url }}">{{ menu_item.caption }}</a>
-        <ul class="nivel2">
-            {% for child in menu_item.children %}            
+    <li><span class="dir" href="{{ menu_item.url }}">{{ menu_item.caption }}</span>
+        <ul>
+            {% for child in menu_item.children %}
             {% if child.has_children %}
-            <li><a class="lvl2" href="{{ child.url }}">{{ child.caption }}</a>
-                <div class="nivel3">                    
-                    {% for subchild in child.children %}
-                    <a href="{{ subchild.url }}">{{ subchild.caption }}</a>
-                    {% endfor %}                    
-                </div>
-            </li>
+            <li><a  href="{{ child.url }}">{{ child.caption }}</a></li>
             {% else %}
-            <li><a class="lvl2" href="{{ child.url }}">{{ child.caption }}</a></li>
+            <li><a href="{{ child.url }}">{{ child.caption }}</a></li>
             {% endif %}
             {% endfor %}
         </ul>
     </li>
     {% else %}
-    <li><a class="lvl1" href="{{ menu_item.url }}">{{ menu_item.caption }}</a></li>
+    <li><a href="{{ menu_item.url }}">{{ menu_item.caption }}</a></li>
     {% endif %}
     {% endfor %}
 </ul>
 {% endifequal %}
 
-
-{% ifequal menu_type "amigos" %}
+<!--MENU LATERAL DE ADDAC-->
+{% ifequal menu_type "sidebar" %}
     {% for menu_item in menu.root_item.children %}
-    <a class="enlace-amigo" href="{{menu_item.url}}">{{menu_item.caption}}</a>
+    <a href="{{menu_item.url}}">{{menu_item.caption}}</a>
     {% endfor %}
 {% endifequal %}
 
+<!--MENU LATERAL DE ADDAC ZONAS-->
+{% ifequal menu_type "sidebar-zonas" %}
+    {% for menu_item in menu.root_item.children %}
+    <a href="{{menu_item.url}}">{{menu_item.caption}}</a>
+    {% endfor %}
+{% endifequal %}

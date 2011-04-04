@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% load tree_menu_tags %}
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>ADDAC | {%block title%}{%endblock%}</title>
+        <meta name="keywords" content="ADDAC, Matagalpa, Nicaragua" />
+        <meta name="description" content="Descripcion de addac'" />
+        <link href="/files/css/estilo.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="/files/css/dropdown.linear.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="/files/css/default.ultimate.linear.css" media="screen" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/files/css/imageflow.css" type="text/css" />
+        <!--[if lt IE 7]>
+        <script type="text/javascript" src="/files/js/IE/jquery/jquery.js"></script>
+        <script type="text/javascript" src="/files/js/IE/jquery/jquery.dropdown.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="/files/js/imageflow.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+            //Larger thumbnail preview
+            $(".escondete").hide();
+            $(".primera").show();
+            $("ul.thumb li").hover(function() {
+                $(this).css({'z-index' : '10'});
+                $(this).find('img').addClass("hover").stop()
+                    .animate({
+                        marginTop: '-75px',
+                        marginLeft: '-30px',
+                        top: '100%',
+                        left: '18%',
+                        width: '65px',
+                        height: '65px',
+                        padding: '10px'
+                    }, 200);
+
+                } , function() {
+                $(this).css({'z-index' : '0'});
+                $(this).find('img').removeClass("hover").stop()
+                    .animate({
+                        marginTop: '0',
+                        marginLeft: '0',
+                        top: '0',
+                        left: '0',
+                        width: '40px',
+                        height: '40px',
+                        padding: '3px'
+                    }, 400);
+            });
+            //Swap Image on Click
+                $("ul.thumb li a").click(function() {
+                    var id = $(this).attr("id"); //Find Image Name
+                    $(".escondete").hide();
+                    $('#programa'+id).show();
+                    return false;
+                });
+
+            });
+            </script>
+{%block extraheader%}{%endblock%}
+</head>
+<body>
+    <div id="sombratop"></div>
+    <div id="contenedor">
+        <div id="header">
+            <div id="logo">
+                <a href="/"><img src="/files/imagen/logobanner.png" alt="banner"/></a>
+            </div>
+            <div id="social">
+                <a href=""><img src="/files/imagen/buscador.png"  alt="banner"/></a>
+                <br/><br/>
+                <a href="/"><img src="/files/imagen/rss.png"  alt="buscador"/></a>
+                <a href=""><img src="/files/imagen/facebook.png"  alt="facebook"/></a>
+                <a href=""><img src="/files/imagen/twitterb.png"  alt="twitter"/></a>
+                <br/>
+            </div>
+            <div class="separador"></div>
+            <br/>
+        </div>
+        <div id="pagina">
+            <div id="menu-principal">
+            {% show_menu "Menu Principal" "menu-principal" %}
+            </div>
+            <div id="cuerpo" class="centro">
+                <div id="cuerpo-izq">
+                    <div class="container">
+                        <ul class="thumb">
+                            <li><a id="1" href="/files/imagen/main_image1.jpg"><img src="/files/imagen/thumb1.jpg" alt="" /></a></li>
+                            <li><a id="2" href="/files/imagen/main_image2.jpg"><img src="/files/imagen/thumb2.jpg" alt="" /></a></li>
+                            <li><a id="3" href="/files/imagen/main_image1.jpg"><img src="/files/imagen/thumb3.jpg" alt="" /></a></li>
+                        </ul>
+                        <div id="main_view">
+                            <div id="programa1" class="escondete primera">
+                                <a href="#" target="_blank">
+                                <img src="/files/imagen/main_image1.jpg" alt="" />
+                                <div class="programatext">
+                                    <div class="programatitulo">Programa Producción y Comercialización</div>
+                                    <a class="ir" href="/"></a>
+                                </div>
+                                </a>
+                            </div>
+                            <div id="programa2" class="escondete">
+                                <a href="" target="_blank">
+                                <img src="/files/imagen/main_image2.jpg" alt="" />
+                                </a>
+                            </div>
+                            <div id="programa3" class="escondete">
+                                <a href="" target="_blank">
+                                <img src="/files/imagen/main_image3.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="separador"></div>
+                    </div>
+                    <div class="separador-seccion">
+                        Noticias
+                        <a href="/">Ver Todas </a>
+                    </div>
+                    <div class="seccion-index">
+                        <div id="index-noticia-left">
+                            <div class="noticia-principal">
+                                <div class="thumb-noticia-index"><a href=""><img class="izq"  src="/files/imagen/noticiaprincipal.png"  alt="thumb"/></a></div>
+                                <div class="titulo-noticia-index"><a href="">penatibus ultricies magna lorem. Hac aliquet eros</a></div>
+                                <div class="resume-noticia-index">Etiam sit enim porttitor placerat penatibus, ut dapibus porta turpis elementum turpis. Est proin. Dignissim turpis, turpis penatibus ultricies magna lorem. Hac aliquet eros. Turpis</div>
+                                <div class="leermas-noticia-index"><a href="">Leer Mas <img class="der" src="/files/imagen/flechitab.jpg" alt="flecha"/></a></div>
+                            </div>
+                            <div class="separador"></div>
+                            <div class="noticia-principal">
+                                <div class="thumb-noticia-index"><a href=""><img class="izq"  src="/files/imagen/noticiaprincipal.png"  alt="thumb"/></a></div>
+                                <div class="titulo-noticia-index"><a href="">penatibus ultricies magna lorem. Hac aliquet eros</a></div>
+                                <div class="resume-noticia-index">Etiam sit enim porttitor placerat penatibus, ut dapibus porta turpis elementum turpis. Est proin. Dignissim turpis, turpis penatibus ultricies magna lorem. Hac aliquet eros. Turpis</div>
+                                <div class="leermas-noticia-index"><a href="">Leer Mas <img class="der" src="/files/imagen/flechitab.jpg" alt="flecha"/></a></div>
+                            </div>
+                            <div class="separador"></div>
+                            <div class="noticia-principal">
+                                <div class="thumb-noticia-index"><a href=""><img class="izq"  src="/files/imagen/noticiaprincipal.png" alt="thumb"/></a></div>
+                                <div class="titulo-noticia-index"><a href="">penatibus ultricies magna lorem. Hac aliquet eros</a></div>
+                                <div class="resume-noticia-index">Etiam sit enim porttitor placerat penatibus, ut dapibus porta turpis elementum turpis. Est proin. Dignissim turpis, turpis penatibus ultricies magna lorem. Hac aliquet eros. Turpis</div>
+                                <div class="leermas-noticia-index"><a href="">Leer Mas <img class="der" src="/files/imagen/flechitab.jpg" alt="flecha"/></a></div>
+                            </div>
+                            <div class="separador"></div>
+                            <br/>
+                        </div>
+                        <div id="index-noticia-right">
+                            <div id="innovacion-titulo">Innovacion Tecnologica</div>
+                            <div id="innovacion-contendor">
+                                <a href=""><img src="/files/imagen/notiinovacion.jpg" alt="thumb"/></a>
+                                <div class="titulo-noticia-index"><a href="">penatibus ultricies magna lorem. Hac aliquet eros</a></div>
+                                <div class="resume-noticia-index">Etiam sit enim porttitor placerat penatibus, ut dapibus porta turpis elementum turpis. Est proin. Dignissim turpis, turpis penatibus ultricies magna lorem. Hac aliquet eros. Turpis</div>
+                                <div class="leermas-noticia-index"><a href="">Leer Mas <img class="der" src="/files/imagen/flechita.jpg" alt="flecha"/></a></div>
+                            </div>
+                        </div>
+                        <div class="separador"></div>
+                    </div>
+                    <div class="separador-seccion">
+                        Ultimas Adquisiciones
+                        <a href="/">Ver Todas </a>
+                    </div>
+                    <div class="seccion-index">
+                        <div id="myImageFlow" class="imageflow">
+                            <img src="/files/imagen/forestal.jpg" longdesc="/" alt="Forestal" />
+                            <img src="/files/imagen/calera.jpg" longdesc="/files/imagen/calera.jpg"  alt="Calera" />
+                            <img src="/files/imagen/agua.jpg" longdesc="/files/imagen/agua.jpg"  alt="Agua" />
+                            <img src="/files/imagen/veneno.jpg" longdesc="/files/imagen/veneno.jpg"  alt="Veneno" />
+                        </div>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+                <div id="sidebar-der">
+                    <div class="bloque">
+                        <div class="titulo-bloque">ADDAC</div>
+                        <div class="contenedor-bloque" id="addac">
+                        {% show_menu "Menu ADDAC" "sidebar" %}
+                            <br/>
+                            <div class="separador"></div>
+                        </div>
+                    </div>
+                    <div class="bloque">
+                        <div class="titulo-bloque">Zonas de Cobertura</div>
+                        <div class="contenedor-bloque" id="zonas">
+                            {% show_menu "Menu Zonas" "sidebar-zonas" %}
+                            <br/>
+                            <div class="separador"></div>
+                        </div>
+                    </div>
+                    <div class="bloque">
+                        <div class="titulo-bloque">Videos</div>
+                        <div class="contenedor-bloque">
+                            <center><img src="/files/imagen/videos.jpg"alt="videos"/></center>
+                            <br/>
+                            <div class="separador"></div>
+                        </div>
+                    </div>
+                    <div class="bloque">
+                        <div class="titulo-bloque">Enlaces de interes</div>
+                        <div class="contenedor-bloque" id="enlaces">
+                            <a href="/">Cooperantes <img src="/files/imagen/cooperantesicon.png"alt="cooperantes"/></a>
+                            <a href="/">Alzar las voces <img src="/files/imagen/alzaricon.png" alt="alzar"/></a>
+                            <a href="/">Sitios amigos <img src="/files/imagen/amigosicon.png"alt="sitioamigos"/></a>
+
+                            <div class="separador"></div><br/> <br/>
+                        </div>
+                    </div>
+                </div>
+                <div class="separador"></div>
+                <div id="footer">
+                ADDAC - Asociación para la Diversidad y el Desarrollo Agícola, Direccion, Matagalpa Nicaragua,  telefono <br/> Desarrollado por SIMAS bajo plataforma Django
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
