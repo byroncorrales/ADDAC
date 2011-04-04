@@ -108,6 +108,10 @@ INSTALLED_APPS = (
     'addac.extras',
     'addac.noticias',
     'addac.paginas',
+    'addac.publicaciones',
+    'addac.videos',
+    'addac.enlaces',
+    'addac.banners',
     # Uncomment the next line to enable the admin:
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
