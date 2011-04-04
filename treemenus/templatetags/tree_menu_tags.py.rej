@@ -1,0 +1,23 @@
+Index: tree_menu_tags.py
+--- tree_menu_tags.py	(revision 53)
++++ tree_menu_tags.py	(working copy)
+@@ -12,11 +12,14 @@
+ 
+ 
+ def show_menu(context, menu_name, menu_type=None):
+-    menu = Menu.objects.get(name=menu_name)
+-    context['menu'] = menu
+-    if menu_type:
+-        context['menu_type'] = menu_type
+-    return context
++    try:
++        menu = Menu.objects.get(name=menu_name) 
++        context['menu'] = menu
++        if menu_type:
++            context['menu_type'] = menu_type
++        return context
++    except Menu.DoesNotExist:     
++        return context
+ register.inclusion_tag('%s/menu.html' % APP_LABEL, takes_context=True)(show_menu)
+ 
+ 

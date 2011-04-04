@@ -1,0 +1,38 @@
+{% load tree_menu_tags %}
+
+<!--MENU PRINCIPAL PROPIO DE CIEETS-->
+{% ifequal menu_type "menu-principal" %}
+<ul class="nivel1" id="nav">
+    {% for menu_item in menu.root_item.children %}    
+    {% if menu_item.has_children %}
+    <li><a class="lvl1" href="{{ menu_item.url }}">{{ menu_item.caption }}</a>
+        <ul class="nivel2">
+            {% for child in menu_item.children %}            
+            {% if child.has_children %}
+            <li><a class="lvl2" href="{{ child.url }}">{{ child.caption }}</a>
+                <div class="nivel3">                    
+                    {% for subchild in child.children %}
+                    <a href="{{ subchild.url }}">{{ subchild.caption }}</a>
+                    {% endfor %}                    
+                </div>
+            </li>
+            {% else %}
+            <li><a class="lvl2" href="{{ child.url }}">{{ child.caption }}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </li>
+    {% else %}
+    <li><a class="lvl1" href="{{ menu_item.url }}">{{ menu_item.caption }}</a></li>
+    {% endif %}
+    {% endfor %}
+</ul>
+{% endifequal %}
+
+
+{% ifequal menu_type "amigos" %}
+    {% for menu_item in menu.root_item.children %}
+    <a class="enlace-amigo" href="{{menu_item.url}}">{{menu_item.caption}}</a>
+    {% endfor %}
+{% endifequal %}
+

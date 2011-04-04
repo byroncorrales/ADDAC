@@ -104,6 +104,7 @@ INSTALLED_APPS = (
     'livesettings',
     'keyedcache',
     'south',
+    'addac.treemenus',
     'addac.tagging',
     'addac.extras',
     'addac.noticias',
