@@ -1,5 +1,4 @@
 # -*- coding: UTF-8 -*-
-import datetime
 from django.core.exceptions import ViewDoesNotExist
 from django.http import Http404
 from django.http import HttpResponse
@@ -14,16 +13,11 @@ from paginas.models import *
 from tagging.models import *
 
 def inicio(request):
-#    mes_actual = datetime.datetime.now().month
-#    eventos = Evento.objects.filter(fecha_inicio__month=mes_actual).order_by('-fecha_inicio')[:3]
-#    eventos_prox = Evento.objects.filter(fecha_inicio__month=mes_actual + 1).order_by('-fecha_inicio')[:3]
-#    noticia = Noticia.objects.all().order_by('-fecha', '-id')[:4]
-#    dicc = {
-#        'eventos':eventos,
-#        'eventos_prox':eventos_prox,
-#        'noticia':noticia,
-#    }
-    return render_to_response('base.html',
+    noticia = Noticia.objects.filter(tipo = 1).order_by('-fecha', '-id')[:4]
+    dicc = {
+        'noticia':noticia,
+    }
+    return render_to_response('index.html',dicc,
                               context_instance=RequestContext(request))
 
 def tags(request, id):

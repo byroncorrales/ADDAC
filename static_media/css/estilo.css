@@ -312,6 +312,7 @@ ul.thumb li img.hover {
     border-left:#e2e2e2 1px solid;
     float:right;
     width:240px;
+    height:370px;
 }
 
 #innovacion-titulo{
@@ -369,6 +370,7 @@ ul.thumb li img.hover {
 .thumb-noticia-index{
     float:left;
     height:100px;
+    margin-right:10px;
 }
 
 #thumb-noticia-principal{

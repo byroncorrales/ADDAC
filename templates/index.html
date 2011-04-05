@@ -1,0 +1,74 @@
+{%extends "base.html"%}
+{%block contenido%}
+                 <div class="container">
+                        <ul class="thumb">
+                            <li><a id="1" href="/files/imagen/main_image1.jpg"><img src="/files/imagen/thumb1.jpg" alt="" /></a></li>
+                            <li><a id="2" href="/files/imagen/main_image2.jpg"><img src="/files/imagen/thumb2.jpg" alt="" /></a></li>
+                            <li><a id="3" href="/files/imagen/main_image1.jpg"><img src="/files/imagen/thumb3.jpg" alt="" /></a></li>
+                        </ul>
+                        <div id="main_view">
+                            <div id="programa1" class="escondete primera">
+                                <a href="#" target="_blank">
+                                <img src="/files/imagen/main_image1.jpg" alt="" />
+                                <div class="programatext">
+                                    <div class="programatitulo">Programa Producción y Comercialización</div>
+                                    <a class="ir" href="/"></a>
+                                </div>
+                                </a>
+                            </div>
+                            <div id="programa2" class="escondete">
+                                <a href="" target="_blank">
+                                <img src="/files/imagen/main_image2.jpg" alt="" />
+                                </a>
+                            </div>
+                            <div id="programa3" class="escondete">
+                                <a href="" target="_blank">
+                                <img src="/files/imagen/main_image3.jpg" alt="" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="separador"></div>
+                    </div>
+                    <div class="separador-seccion">
+                        Noticias
+                        <a href="/">Ver Todas </a>
+                    </div>
+                    <div class="seccion-index">
+                        <div id="index-noticia-left">
+                           {% for noticia in noticia %}
+                            <div class="noticia-principal">
+                                <div class="thumb-noticia-index"><a href=""><img class="izq"  src="{{noticia.imagen.url_62x48}}"  alt="thumb"/></a></div>
+                                <div class="titulo-noticia-index"><a href="">{{noticia.titulo}}</a></div>
+                                <div class="resume-noticia-index">{{noticia.contenido|safe|truncatewords_html:25}}</div>
+                                <div class="leermas-noticia-index"><a href="{{noticia.slug}}">Leer Mas <img class="der" src="/files/imagen/flechitab.jpg" alt="flecha"/></a></div>
+                            </div>
+                            <div class="separador"></div>
+                            {%endfor%}
+                            <br/>
+                        </div>
+                        <div id="index-noticia-right">
+                            <div id="innovacion-titulo">Innovacion Tecnologica</div>
+                            <div id="innovacion-contendor">
+                                <a href=""><img src="/files/imagen/notiinovacion.jpg" alt="thumb"/></a>
+                                <div class="titulo-noticia-index"><a href="">penatibus ultricies magna lorem. Hac aliquet eros</a></div>
+                                <div class="resume-noticia-index">Etiam sit enim porttitor placerat penatibus, ut dapibus porta turpis elementum turpis. Est proin. Dignissim turpis, turpis penatibus ultricies magna lorem. Hac aliquet eros. Turpis</div>
+                                <div class="leermas-noticia-index"><a href="">Leer Mas <img class="der" src="/files/imagen/flechita.jpg" alt="flecha"/></a></div>
+                            </div>
+                        </div>
+                        <div class="separador"></div>
+                    </div>
+                    <div class="separador-seccion">
+                        Ultimas Adquisiciones
+                        <a href="/">Ver Todas </a>
+                    </div>
+                    <div class="seccion-index">
+                        <div id="myImageFlow" class="imageflow">
+                            <img src="/files/imagen/forestal.jpg" longdesc="/" alt="Forestal" />
+                            <img src="/files/imagen/calera.jpg" longdesc="/files/imagen/calera.jpg"  alt="Calera" />
+                            <img src="/files/imagen/agua.jpg" longdesc="/files/imagen/agua.jpg"  alt="Agua" />
+                            <img src="/files/imagen/veneno.jpg" longdesc="/files/imagen/veneno.jpg"  alt="Veneno" />
+                        </div>
+                        <br/>
+                        <br/>
+                    </div>
+{%endblock%}
