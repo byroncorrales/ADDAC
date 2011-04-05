@@ -3,12 +3,19 @@ from itertools import chain
 from django.db import models
 from django.utils.translation import ugettext_lazy
 from django.utils.translation import ugettext as _
+#importancion necesaria para poder anclar con paginas
+from addac.paginas.models import Pagina
 
 class MenuItem(models.Model):
     parent = models.ForeignKey('self', verbose_name=ugettext_lazy('parent'), null=True, blank=True)
     caption = models.CharField(ugettext_lazy('caption'), max_length=50)
+    #necesario para poder seleccionar el tipo de menu
+    tipo = models.IntegerField(choices=((1, 'URL'), (2, 'Pagina')))
+    pagina = models.ForeignKey(Pagina, blank=True, null=True)
+    #fin de clicle
     url = models.CharField(ugettext_lazy('URL'), max_length=200, blank=True)
-    named_url = models.CharField(ugettext_lazy('named URL'), max_length=200, blank=True)
+    #removido name_url porque no sirve para nada
+    #named_url = models.CharField(ugettext_lazy('named URL'), max_length=200, blank=True)
     level = models.IntegerField(ugettext_lazy('level'), default=0, editable=False)
     rank = models.IntegerField(ugettext_lazy('rank'), default=0, editable=False)
     menu = models.ForeignKey('Menu', related_name='contained_items', verbose_name=ugettext_lazy('menu'), null=True, blank=True, editable=False)

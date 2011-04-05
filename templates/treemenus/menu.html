@@ -5,19 +5,19 @@
  <ul id="nav" class="dropdown dropdown-linear">
     {% for menu_item in menu.root_item.children %}
     {% if menu_item.has_children %}
-    <li><span class="dir" href="{{ menu_item.url }}">{{ menu_item.caption }}</span>
+    <li><span class="dir">{{ menu_item.caption }}</span>
         <ul>
             {% for child in menu_item.children %}
             {% if child.has_children %}
-            <li><a  href="{{ child.url }}">{{ child.caption }}</a></li>
+            <li><a  href={% if child.tipo == 1 %}"{{ child.pagina.get_full_url }}"{% else %}"{{ child.url }}"{% endif %}>{{ child.caption }}</a></li>
             {% else %}
-            <li><a href="{{ child.url }}">{{ child.caption }}</a></li>
+            <li><a  href={% if child.tipo == 1 %}"{{ child.pagina.get_full_url }}"{% else %}"{{ child.url }}"{% endif %}>{{ child.caption }}</a></li>
             {% endif %}
             {% endfor %}
         </ul>
     </li>
     {% else %}
-    <li><a href="{{ menu_item.url }}">{{ menu_item.caption }}</a></li>
+    <li><a href={% if menu_item.tipo == 1 %}"{{ menu_item.pagina.get_full_url }}"{% else %}"{{ menu_item.url }}"{% endif %}>{{ menu_item.caption }}</a></li>
     {% endif %}
     {% endfor %}
 </ul>
