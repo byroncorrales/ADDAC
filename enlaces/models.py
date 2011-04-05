@@ -7,7 +7,7 @@ class Cooperante(models.Model):
     '''Modelo que representa los enlaces a cooperantes'''
     nombre = models.CharField('Nombre Cooperante', max_length=200, unique=True)
     logo = ImageWithThumbsField(upload_to=get_image_path, sizes=((250, 250), (180, 180)))
-    web = models.URLField('Sitio Web' ,help_text=" Debe cumplir con el formato 'http://www.dominio.com'")
+    web = models.URLField('Sitio Web' ,help_text=" Debe cumplir con el formato 'http://www.dominio.com'",blank=True, null=True)
     imgDir = 'attachments/cooperantes'
 
     def __unicode__(self):
@@ -20,7 +20,7 @@ class Cooperante(models.Model):
 
 class SitioAmigo(models.Model):
     '''Modelo que representa los enlaces a sitios amigos'''
-    nombre = models.CharField('Nombre Cooperante', max_length=200, unique=True)
+    nombre = models.CharField('Nombre Sitio Amigo', max_length=200, unique=True)
     web = models.URLField('Sitio Web' ,help_text=" Debe cumplir con el formato 'http://www.dominio.com'")
 
     def __unicode__(self):
