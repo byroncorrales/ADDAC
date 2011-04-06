@@ -41,8 +41,8 @@
                         <div id="index-noticia-left">
                            {% for noticia in noticia %}
                             <div class="noticia-principal">
-                                <div class="thumb-noticia-index"><a href=""><img class="izq"  src="{{noticia.imagen.url_62x48}}"  alt="thumb"/></a></div>
-                                <div class="titulo-noticia-index"><a href="">{{noticia.titulo}}</a></div>
+                                <div class="thumb-noticia-index"><a href="{{noticia.slug}}"><img class="izq"  src="{{noticia.imagen.url_62x48}}"  alt="thumb"/></a></div>
+                                <div class="titulo-noticia-index"><a href="{{noticia.slug}}">{{noticia.titulo}}</a></div>
                                 <div class="resume-noticia-index">{{noticia.contenido|safe|truncatewords_html:25}}</div>
                                 <div class="leermas-noticia-index"><a href="{{noticia.slug}}">Leer Mas <img class="der" src="/files/imagen/flechitab.jpg" alt="flecha"/></a></div>
                             </div>
@@ -64,15 +64,14 @@
                         <div class="separador"></div>
                     </div>
                     <div class="separador-seccion">
-                        Ultimas Adquisiciones
+                        Ultimas Adquisiciones CIDOC
                         <a href="/">Ver Todas </a>
                     </div>
                     <div class="seccion-index">
                         <div id="myImageFlow" class="imageflow">
-                            <img src="/files/imagen/forestal.jpg" longdesc="/" alt="Forestal" />
-                            <img src="/files/imagen/calera.jpg" longdesc="/files/imagen/calera.jpg"  alt="Calera" />
-                            <img src="/files/imagen/agua.jpg" longdesc="/files/imagen/agua.jpg"  alt="Agua" />
-                            <img src="/files/imagen/veneno.jpg" longdesc="/files/imagen/veneno.jpg"  alt="Veneno" />
+                        {%for pub in publicacion%}
+                            <img src="{{pub.imagen.url_156x192}}" longdesc="/publicacion/{{pub.slug}}" alt="{{pub.titulo}}" />
+                        {%endfor%}
                         </div>
                         <br/>
                         <br/>
