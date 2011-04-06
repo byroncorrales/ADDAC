@@ -8,16 +8,19 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.views.generic.simple import direct_to_template
-from noticias.models import *
-from paginas.models import *
+from addac.noticias.models import *
+from addac.paginas.models import *
+from addac.banners.models import Banner
 from tagging.models import *
 
 def inicio(request):
     noticia = Noticia.objects.filter(tipo = 1).order_by('-fecha', '-id')[:4]
     noticia_inov = Noticia.objects.filter(tipo = 2).order_by('-fecha', '-id')[:1]
+    banner = Banner.objects.all()
     dicc = {
         'noticia':noticia,
         'noticia_inov':noticia_inov,
+        'banner':banner,
     }
     return render_to_response('index.html',dicc,
                               context_instance=RequestContext(request))

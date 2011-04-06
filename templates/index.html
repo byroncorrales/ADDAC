@@ -2,30 +2,34 @@
 {%block contenido%}
                  <div class="container">
                         <ul class="thumb">
-                            <li><a id="1" href="/files/imagen/main_image1.jpg"><img src="/files/imagen/thumb1.jpg" alt="" /></a></li>
-                            <li><a id="2" href="/files/imagen/main_image2.jpg"><img src="/files/imagen/thumb2.jpg" alt="" /></a></li>
-                            <li><a id="3" href="/files/imagen/main_image1.jpg"><img src="/files/imagen/thumb3.jpg" alt="" /></a></li>
+                        {% for banner in banner %}
+                            <li><a id="{{banner.id}}" href="{{banner.imagen.url_540x275}}"><img src="{{banner.miniatura.url_69x51}}" alt="" /></a></li>
+                        {% endfor %}
                         </ul>
                         <div id="main_view">
-                            <div id="programa1" class="escondete primera">
-                                <a href="#" target="_blank">
-                                <img src="/files/imagen/main_image1.jpg" alt="" />
-                                <div class="programatext">
-                                    <div class="programatitulo">Programa Producción y Comercialización</div>
-                                    <a class="ir" href="/"></a>
-                                </div>
-                                </a>
-                            </div>
-                            <div id="programa2" class="escondete">
-                                <a href="" target="_blank">
-                                <img src="/files/imagen/main_image2.jpg" alt="" />
-                                </a>
-                            </div>
-                            <div id="programa3" class="escondete">
-                                <a href="" target="_blank">
-                                <img src="/files/imagen/main_image3.jpg" alt="" />
-                                </a>
-                            </div>
+                            {%for banner in banner %}
+                                {% if forloop.first %}
+                                    <div id="programa1" class="escondete primera">
+                                        <a href="{{banner.url}}" target="_blank">
+                                        <img src="{{banner.imagen.url_540x275}}" alt="" />
+                                        <div class="programatext">
+                                            <div class="programatitulo">{{banner.titulo}}</div>
+                                            <a class="ir" href="{{banner.url}}"></a>
+                                        </div>
+                                        </a>
+                                    </div>
+                                 {%else%}
+                                    <div id="programa{{banner.id}}" class="escondete">
+                                        <a href="{{banner.url}}" target="_blank">
+                                        <img src="{{banner.imagen.url_540x275}}" alt="" />
+                                        <div class="programatext">
+                                            <div class="programatitulo">{{banner.titulo}}</div>
+                                            <a class="ir" href="{{banner.url}}"></a>
+                                        </div>
+                                        </a>
+                                    </div>
+                                {%endif%}
+                             {%endfor%}
                         </div>
                         <div class="separador"></div>
                     </div>
@@ -37,7 +41,7 @@
                         <div id="index-noticia-left">
                            {% for noticia in noticia %}
                             <div class="noticia-principal">
-                                <div class="thumb-noticia-index"><a href=""><img class="izq"  src="{{noticia.imagen.url_62x48}}"  alt="thumb"/><div class="separador"></div><br><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="{{noticia.slug}}" layout="button_count" show_faces="false" width="65" font="trebuchet ms" colorscheme="light"></fb:like></center></a></div>
+                                <div class="thumb-noticia-index"><a href=""><img class="izq"  src="{{noticia.imagen.url_62x48}}"  alt="thumb"/></a></div>
                                 <div class="titulo-noticia-index"><a href="">{{noticia.titulo}}</a></div>
                                 <div class="resume-noticia-index">{{noticia.contenido|safe|truncatewords_html:25}}</div>
                                 <div class="leermas-noticia-index"><a href="{{noticia.slug}}">Leer Mas <img class="der" src="/files/imagen/flechitab.jpg" alt="flecha"/></a></div>
