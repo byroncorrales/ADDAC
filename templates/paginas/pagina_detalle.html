@@ -1,0 +1,16 @@
+{%extends "base.html"%}
+{%block contenido%}
+                    <div class="container" style ="height:70px !important;">
+                        <br>
+                        <div id="title-container-interna">
+                        <div id="title-menu-padre">{%if menu1.level == 1%}{{menu1.menu.name}}{%else%}{{menu1.parent.caption}}{%endif%}</div>
+                            <h1>{{pagina_detalle.titulo}}</h1>
+                        </div>
+                    </div>
+                    <div id="body-text">
+                        <div id="body-right">
+                            {{pagina_detalle.contenido|safe}}
+                        </div>
+                        <div class="espaciador"></div>
+                    </div>
+ {%endblock%}

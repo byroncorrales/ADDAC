@@ -9,15 +9,15 @@
         <ul>
             {% for child in menu_item.children %}
             {% if child.has_children %}
-            <li><a  href={% if child.tipo == 1 %}"{{ child.pagina.get_full_url }}"{% else %}"{{ child.url }}"{% endif %}>{{ child.caption }}</a></li>
+            <li><a  href={% if child.tipo == 2 %}"{{ child.pagina.get_full_url }}?m={{child.id}}"{% else %}"{{ child.url }}"{% endif %}>{{ child.caption }}</a></li>
             {% else %}
-            <li><a  href={% if child.tipo == 1 %}"{{ child.pagina.get_full_url }}"{% else %}"{{ child.url }}"{% endif %}>{{ child.caption }}</a></li>
+            <li><a  href={% if child.tipo == 2 %}"{{ child.pagina.get_full_url }}?m={{child.id}}"{% else %}"{{ child.url }}"{% endif %}>{{ child.caption }}</a></li>
             {% endif %}
             {% endfor %}
         </ul>
     </li>
     {% else %}
-    <li><a href={% if menu_item.tipo == 1 %}"{{ menu_item.pagina.get_full_url }}"{% else %}"{{ menu_item.url }}"{% endif %}>{{ menu_item.caption }}</a></li>
+    <li><a href={% if menu_item.tipo == 2 %}"{{ menu_item.pagina.get_full_url }}?m={{child.id}}"{% else %}"{{ menu_item.url }}"{% endif %}>{{ menu_item.caption }}</a></li>
     {% endif %}
     {% endfor %}
 </ul>
@@ -26,13 +26,13 @@
 <!--MENU LATERAL DE ADDAC-->
 {% ifequal menu_type "sidebar" %}
     {% for menu_item in menu.root_item.children %}
-    <a href="{% if menu_item.tipo == 1 %}"{{ menu_item.pagina.get_full_url }}"{% else %}"{{ menu_item.url }}"{% endif %}">{{menu_item.caption}}</a>
+    <a href={% if menu_item.tipo == 2 %}"{{ menu_item.pagina.get_full_url }}?m={{menu_item.id}}"{% else %}"{{ menu_item.url }}"{% endif %}>{{menu_item.caption}}</a>
     {% endfor %}
 {% endifequal %}
 
 <!--MENU LATERAL DE ADDAC ZONAS-->
 {% ifequal menu_type "sidebar-zonas" %}
     {% for menu_item in menu.root_item.children %}
-    <a href="{% if menu_item.tipo == 1 %}"{{ menu_item.pagina.get_full_url }}"{% else %}"{{ menu_item.url }}"{% endif %}">{{menu_item.caption}}</a>
+    <a href={% if menu_item.tipo == 2 %}"{{ menu_item.pagina.get_full_url }}?m={{menu_item.id}}"{% else %}"{{ menu_item.url }}"{% endif %}>{{menu_item.caption}}</a>
     {% endfor %}
 {% endifequal %}

@@ -12,6 +12,7 @@ from addac.noticias.models import Noticia
 from addac.paginas.models import Pagina
 from addac.banners.models import Banner
 from addac.publicaciones.models import Publicacion
+from addac.treemenus.models import MenuItem
 from tagging.models import *
 
 def inicio(request):
@@ -35,8 +36,14 @@ def tags(request, id):
 
 def pagina(request,slug):
     '''Muestra el detalle de la pagina'''
-    pagina = get_object_or_404(Pagina, slug=slug)
-    #Jala las ultimas noticias relacionadas con la misma categoria y excluye a la noticia misma
-    dicc = {'pagina': pagina,
-           }
+    mp = request.GET.get('m','')
+    pagina_detalle = get_object_or_404(Pagina, slug=slug)
+    try:
+        menu1 = get_object_or_404(MenuItem, id=mp)
+    except:
+        menu1 =""
+        pass
+    dicc = {'pagina_detalle': pagina_detalle,
+            'menu1':menu1,
+                       }
     return direct_to_template(request, 'paginas/pagina_detalle.html',dicc)
