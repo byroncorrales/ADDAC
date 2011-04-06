@@ -37,7 +37,7 @@
                         <div id="index-noticia-left">
                            {% for noticia in noticia %}
                             <div class="noticia-principal">
-                                <div class="thumb-noticia-index"><a href=""><img class="izq"  src="{{noticia.imagen.url_62x48}}"  alt="thumb"/></a></div>
+                                <div class="thumb-noticia-index"><a href=""><img class="izq"  src="{{noticia.imagen.url_62x48}}"  alt="thumb"/><div class="separador"></div><br><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="{{noticia.slug}}" layout="button_count" show_faces="false" width="65" font="trebuchet ms" colorscheme="light"></fb:like></center></a></div>
                                 <div class="titulo-noticia-index"><a href="">{{noticia.titulo}}</a></div>
                                 <div class="resume-noticia-index">{{noticia.contenido|safe|truncatewords_html:25}}</div>
                                 <div class="leermas-noticia-index"><a href="{{noticia.slug}}">Leer Mas <img class="der" src="/files/imagen/flechitab.jpg" alt="flecha"/></a></div>
@@ -49,10 +49,12 @@
                         <div id="index-noticia-right">
                             <div id="innovacion-titulo">Innovacion Tecnologica</div>
                             <div id="innovacion-contendor">
-                                <a href=""><img src="/files/imagen/notiinovacion.jpg" alt="thumb"/></a>
-                                <div class="titulo-noticia-index"><a href="">penatibus ultricies magna lorem. Hac aliquet eros</a></div>
-                                <div class="resume-noticia-index">Etiam sit enim porttitor placerat penatibus, ut dapibus porta turpis elementum turpis. Est proin. Dignissim turpis, turpis penatibus ultricies magna lorem. Hac aliquet eros. Turpis</div>
-                                <div class="leermas-noticia-index"><a href="">Leer Mas <img class="der" src="/files/imagen/flechita.jpg" alt="flecha"/></a></div>
+                            {% for inov in noticia_inov %}
+                                <a href=""><img class="bordeimagen"src="{{inov.imagen.url_206x138}}" alt="thumb"/></a>
+                                <div class="titulo-noticia-index"><a href="">{{inov.titulo}}</a></div>
+                                <div class="resume-noticia-index">{{inov.contenido|safe|truncatewords_html:35}}</div>
+                                <div class="leermas-noticia-index"><a href="{{inov.slug}}">Leer Mas <img class="der" src="/files/imagen/flechita.jpg" alt="flecha"/></a></div>
+                            {%endfor%}
                             </div>
                         </div>
                         <div class="separador"></div>

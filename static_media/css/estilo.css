@@ -330,6 +330,13 @@ ul.thumb li img.hover {
     height:300px;
 }
 
+.bordeimagen{
+    background:#fff;
+    border: #ccc 1px solid;
+    padding:4px;
+}
+
+
 .titulo-noticia-index a{
     color:#2d2d2d;
     font-weight:bold;
@@ -369,9 +376,18 @@ ul.thumb li img.hover {
 
 .thumb-noticia-index{
     float:left;
-    height:100px;
-    margin-right:10px;
+    height:120px;
+    margin-right:4px;
+
+    width:80px;
 }
+
+.thumb-noticia-index img{
+    background:#fff;
+    border: #ccc 1px solid;
+    padding:2px;
+}
+
 
 #thumb-noticia-principal{
     float:right;
@@ -381,6 +397,12 @@ ul.thumb li img.hover {
     -khtml-box-shadow: -2px 0px 8px #3f3f3f;
     -webkit-box-shadow: -2px 0px 8px #3f3f3f;
 }
+
+.comment-index{
+    color:#;
+}
+fb:like{float:left;
+    }
 
 #title-container{
     width:345px;

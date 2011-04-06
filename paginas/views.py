@@ -14,8 +14,10 @@ from tagging.models import *
 
 def inicio(request):
     noticia = Noticia.objects.filter(tipo = 1).order_by('-fecha', '-id')[:4]
+    noticia_inov = Noticia.objects.filter(tipo = 2).order_by('-fecha', '-id')[:1]
     dicc = {
         'noticia':noticia,
+        'noticia_inov':noticia_inov,
     }
     return render_to_response('index.html',dicc,
                               context_instance=RequestContext(request))
