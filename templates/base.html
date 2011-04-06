@@ -64,7 +64,30 @@
 
             });
             </script>
+            <script type='text/javascript'>
+            $(document).ready(function() {
+                // OPACITY OF BUTTON SET TO 50%
+                $("#link-video").css("opacity","0.75");
 
+                // ON MOUSE OVER
+                $("#link-video").hover(function () {
+
+                // SET OPACITY TO 100%
+                $(this).stop().animate({
+                opacity: 1.0
+                }, "slow");
+                },
+
+                // ON MOUSE OUT
+                function () {
+
+                // SET OPACITY BACK TO 50%
+                $(this).stop().animate({
+                opacity: 0.75
+                }, "slow");
+                });
+                });
+            </script>
 {%block extraheader%}{%endblock%}
 </head>
 <body>
@@ -113,7 +136,7 @@
                     <div class="bloque">
                         <div class="titulo-bloque">Videos</div>
                         <div class="contenedor-bloque">
-                            <center><img src="/files/imagen/videos.jpg"alt="videos"/></center>
+                            <center><a href="/"><img id="link-video" class="" src="/files/imagen/videos2.jpg" alt="videos"/></a></center>
                             <br/>
                             <div class="separador"></div>
                         </div>

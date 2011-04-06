@@ -28,10 +28,13 @@ class Pagina(models.Model):
         self.slug = slugify(self.titulo)
         super(Pagina, self).save(force_insert, force_update)
 
+    def galeria(self):
+        return PaginaImagen.objects.filter(pagina__id=self.id)
+
 class PaginaImagen(models.Model):
     '''fotos para las paginas'''
     titulo = models.CharField('Título', max_length = 100, unique = True,blank = False, null = False)
-    imagen = ImageWithThumbsField(upload_to=get_image_path, sizes=((100, 100), (300, 215), (640, 480)))
+    imagen = ImageWithThumbsField(upload_to=get_image_path, sizes=((100, 100), (180, 250), (640, 480)))
     pagina = models.ForeignKey(Pagina)
     imgDir = 'attachments/imagenes/pagina'
 
