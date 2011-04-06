@@ -26,13 +26,13 @@
 <!--MENU LATERAL DE ADDAC-->
 {% ifequal menu_type "sidebar" %}
     {% for menu_item in menu.root_item.children %}
-    <a href="{{menu_item.url}}">{{menu_item.caption}}</a>
+    <a href="{% if menu_item.tipo == 1 %}"{{ menu_item.pagina.get_full_url }}"{% else %}"{{ menu_item.url }}"{% endif %}">{{menu_item.caption}}</a>
     {% endfor %}
 {% endifequal %}
 
 <!--MENU LATERAL DE ADDAC ZONAS-->
 {% ifequal menu_type "sidebar-zonas" %}
     {% for menu_item in menu.root_item.children %}
-    <a href="{{menu_item.url}}">{{menu_item.caption}}</a>
+    <a href="{% if menu_item.tipo == 1 %}"{{ menu_item.pagina.get_full_url }}"{% else %}"{{ menu_item.url }}"{% endif %}">{{menu_item.caption}}</a>
     {% endfor %}
 {% endifequal %}
