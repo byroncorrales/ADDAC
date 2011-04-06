@@ -23,7 +23,7 @@
 			<tr>
 				<th>{% trans "Caption" %}</th>
 				<th>{% trans "Url" %}</th>
-				<th>{% trans "Named url" %}</th>
+				<th>{% trans "Pagina" %}</th>
 				<th colspan="2">{% trans "Move" %}</th>                                
 			</tr>
 		</thead>
@@ -44,7 +44,9 @@
 						{{ menu_item.url }}
 					</td>
 					<td width="25%">
-						{{ menu_item.named_url }}
+                                            {% if menu_item.pagina %}
+						{{ menu_item.pagina }}
+                                            {% endif%}
 					</td>
 				{% endif %}
 				
