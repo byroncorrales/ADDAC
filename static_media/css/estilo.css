@@ -546,3 +546,26 @@ ul.thumb li img.hover {
 .adjunto img{float:left;margin-right:5px;}
 
 
+#body-text table {
+    font-family: verdana,arial,sans-serif;
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #999999;
+    border-collapse: collapse;
+    width:100%;
+}
+#body-text table th {
+    background:#b5cfd2 url('/files/imagen/cell-blue.jpg');
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #999999;
+}
+#body-text table td {
+    background:#dcddc0 url('/files/imagen/cell-grey.jpg');
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #999999;
+}

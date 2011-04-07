@@ -28,7 +28,7 @@
                     </div>
                         <div id="body-right">
                             {{pagina_detalle.contenido|safe}}
-                            {%if pagina_detalle.adjunto%}
+                            {%if pagina_detalle.adjunto.all%}
                             <div id="titulo-adjuntos">ADJUNTOS</div><br>
                             {%for adjunto in pagina_detalle.adjunto.all%}
                                 <div class="adjunto"><a href="/files/{{adjunto.adjunto}}">Descargar</a><img src="/files/imagen/{{adjunto.tipo}}.png"> {{adjunto.nombre}}<div class="espaciador"></div></div>
@@ -40,7 +40,7 @@
                      {%else%}
                         <div id="body-right" style="width:100% !important;">
                             {{pagina_detalle.contenido|safe}}
-                            {%if pagina_detalle.adjunto%}
+                            {%if pagina_detalle.adjunto.all%}
                             <div id="titulo-adjuntos">ADJUNTOS</div><br>
                             {%for adjunto in pagina_detalle.adjunto.all%}
                                 <div class="adjunto"><img src="/files/imagen/{{adjunto.tipo}}.png"> {{adjunto.nombre}}</div><div class="descarga-adjunto"><a href="/files/{{adjunto.adjunto}}">Descargar</a></div>
