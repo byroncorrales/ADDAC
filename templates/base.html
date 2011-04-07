@@ -68,21 +68,26 @@
         </script>
         <script type='text/javascript'>
             $(document).ready(function() {
+                if($('#cse-search-box input[name="q"]').val()==''){
+                    $('#cse-search-box input[name="q"]').val('Buscar');
+                }
+                $('#cse-search-box input[name="q"]').click(function(){
+                    if($(this).val()=='Buscar'){$(this).val('')}
+                });
+                $('#cse-search-box input[name="q"]').focus(function(){
+                    if($(this).val()=='Buscar'){$(this).val('')}
+                });
                 // OPACITY OF BUTTON SET TO 50%
                 $("#link-video").css("opacity","0.75");
-
                 // ON MOUSE OVER
                 $("#link-video").hover(function () {
-
                     // SET OPACITY TO 100%
                     $(this).stop().animate({
                         opacity: 1.0
                     }, "slow");
                 },
-
                 // ON MOUSE OUT
                 function () {
-
                     // SET OPACITY BACK TO 50%
                     $(this).stop().animate({
                         opacity: 0.75
