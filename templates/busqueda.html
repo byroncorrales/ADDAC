@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Busqueda{% endblock %}
+{% block contenido %}
+<h1>Resultados de Búsqueda para: <span>{{q}}</span></h1>
+
+<div id="cse-search-results"></div>
+<script type="text/javascript">
+    var googleSearchIframeName = "cse-search-results";
+    var googleSearchFormName = "cse-search-box";
+    var googleSearchFrameWidth = 600;
+    var googleSearchDomain = "www.google.com";
+    var googleSearchPath = "/cse";
+</script>
+<script type="text/javascript" src="//www.google.com/afsonline/show_afs_search.js"></script>
+
+<style type="text/css">
+    #cse-search-results{
+        padding-left: 10px;
+    }
+    #cse-search-results iframe{
+        width: 615px !important;
+    }
+    #cse-search-results iframe body{
+        background: none !important;
+    }
+    h1{
+        font-size: 16px;
+        color: #8C8C8C;
+        font-weight: normal;
+        padding-left: 10px;
+        margin-top: 10px;
+    }
+    h1 span{
+        color: #000;
+    }
+</style>
+{% endblock %}
