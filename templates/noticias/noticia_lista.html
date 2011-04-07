@@ -1,0 +1,31 @@
+{%extends "base.html"%}
+{%load comments%}
+{%block title%}{{noticia.titulo}}{%endblock%}
+{%block extraheader%}
+{%endblock%}
+
+{%block contenido%}
+    <div class="container" style ="height:70px !important;">
+        <br>
+        <div id="title-container-interna">
+        <div id="title-menu-padre">Noticias</div>
+            <h1>Generales</h1>
+        </div>
+    </div>
+    <div id="body-text">
+    {%for noticia in noticias.object_list%}
+    <div class="elemento-lista">
+    <a id="lista-flecha" href="/noticias/{{noticia.slug}}"></a>
+        <div class="thumb-noticia-index" style="height:50px !important;"><a href="/noticias/{{noticia.slug}}"><img class="izq"  src="{{noticia.imagen.url_62x48}}"  alt="thumb"/></a></div>
+        <div class="titulo-noticia-index izq" style="width:400px !important;"><a href="/noticias/{{noticia.slug}}">{{noticia.titulo}}</a></div>
+        <div class="extra-noticia">
+            <i><a href="">{{noticia.categoria}}</a></i> |
+            <i>{{noticia.fecha|date:"d M Y"}}</i>
+        </div>
+
+        <div class="separador"></div>
+    </div>
+
+    {%endfor%}
+    </div>
+{%endblock%}

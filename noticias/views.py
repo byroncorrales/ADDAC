@@ -19,9 +19,9 @@ def noticia_detalle(request,slug):
            }
     return direct_to_template(request, 'noticias/noticia_detalle.html',dicc)
 
-def noticia_lista(request):
+def noticia_lista(request,tipo):
     '''Vista para mostrar la lista de noticia'''
-    noticia_lista = Noticia.objects.all().order_by('-fecha','-id')
+    noticia_lista = Noticia.objects.filter(tipo=tipo).order_by('-fecha','-id')
     paginator = Paginator(noticia_lista, 5)
     categoria_noticia = CategoriaNoticia.objects.all()
 
@@ -37,7 +37,7 @@ def noticia_lista(request):
 
     dicc = {'noticias': noticia,'categoria_noticia':categoria_noticia,
            }
-    return direct_to_template(request, 'noticias/noticias_lista.html',dicc)
+    return direct_to_template(request, 'noticias/noticia_lista.html',dicc)
 
 def noticia_lista_cat(request,cat_slug):
     '''Filtra la lista de noticias por una categoria especifica'''
@@ -57,4 +57,4 @@ def noticia_lista_cat(request,cat_slug):
 
     dicc = {'noticias': noticia,'categoria':categoria,
            }
-    return direct_to_template(request, 'noticias/noticias_lista_cat.html',dicc)
+    return direct_to_template(request, 'noticias/noticia_lista.html',dicc)
