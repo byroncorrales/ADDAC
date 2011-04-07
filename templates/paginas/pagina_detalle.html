@@ -19,14 +19,14 @@
                     </div>
                     <div id="body-text">
                     {%if pagina_detalle.galeria %}
-                    <div class="pikachoose">
-                        <ul id="pikame" class="jcarousel-skin-pika">
-                        {%for foto in pagina_detalle.galeria%}
-                            <li><a href="http://www.pikachoose.com"><img src="{{foto.imagen.url_180x250}}"/></a><span>{{foto.titulo}}</span></li>
-                        {%endfor%}
-                        </ul>
-                    </div>
-                        <div id="body-right">
+                        <div id="body-right" style="width:100% !important;">
+                         <div class="pikachoose">
+                            <ul id="pikame" class="jcarousel-skin-pika">
+                            {%for foto in pagina_detalle.galeria%}
+                                <li><a href="#"><img src="{{foto.imagen.url_180x250}}"/></a><span>{{foto.titulo}}</span></li>
+                            {%endfor%}
+                            </ul>
+                        </div>
                             <div id="contenidosafe">
                            {{pagina_detalle.contenido|safe}}
                            </div>

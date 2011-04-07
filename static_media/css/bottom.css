@@ -1,6 +1,6 @@
 /*if you just want to adjust the size of the stage and the thumbnails, you can do so by editing the following lines: */
 .pika-thumbs li{width: 144px; height:74px;}
-.pika-stage {width: 180px;float:left;}
+.pika-stage {width: 180px;float:left; margin-right:15px;}
 .pikachoose {width: 180px;}
 .pika-stage {position: relative;background: #fafafa; border: 1px solid #e5e5e5; padding: 10px 10px 40px 10px;text-align:center;height:250px;}
 
