@@ -28,8 +28,8 @@ class Publicacion(models.Model):
     fecha = models.DateField('Fecha',blank = False, null = False)
     tipo = models.IntegerField('tipo',choices=PUBLICACION_CHOICES)
     imagen = ImageWithThumbsField('Imagen portada',upload_to=get_image_path, sizes=((156,192),(90,110)), help_text="Imágen de portada")
-    publicacion = ContentTypeRestrictedFileField(upload_to = get_file_path, content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB')
-    cidoc = models.BooleanField('Es Cidoc?')
+    publicacion = ContentTypeRestrictedFileField(upload_to = get_file_path, content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB',blank = True, null = True)
+    cidoc = models.BooleanField('Es Cedoc?', help_text="Seleccionar solamente cuando la publicación pertenezca al CEDOC")
     descripcion = models.TextField('Descripción',blank = True, null = True)
     tags =  TagAutocompleteField(help_text='Separar elementos con "," ')
 
