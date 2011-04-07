@@ -598,7 +598,7 @@ width:280px
     border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
     -moz-border-radius: 5px 5px 5px 5px;
- width:100%;
+    width:100%;
  }
 
 #comment_form .errorlist{
@@ -663,4 +663,18 @@ color:#333;
 
 .extra-noticia a:hover{
     color:#3A809C;
+}
+#cse-search-box input[name="q"]{
+    background: #fff !important;
+    border: 1px solid;
+    width: 150px;
+    margin-right: 10px;
+    padding: 5px 12px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    box-shadow: 0px 0px 10px #19200d;
+    -moz-box-shadow: 0px 0px 10px #19200d;
+    -khtml-box-shadow: 0px 0px 10px #19200d;
+    -webkit-box-shadow: 0px 0px 10px #19200d;
 }

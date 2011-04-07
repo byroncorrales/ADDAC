@@ -41,3 +41,7 @@ def pagina(request,slug):
             'menu1':menu1,
                        }
     return direct_to_template(request, 'paginas/pagina_detalle.html',dicc)
+
+def busqueda(request):
+    q = request.GET.get('q', '')
+    return direct_to_template(request, 'busqueda.html', {'q': q})

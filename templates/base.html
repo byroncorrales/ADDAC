@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-{% load tree_menu_tags %}
+    {% load tree_menu_tags %}
     <head>
 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -24,15 +24,15 @@
         <script type="text/javascript" src="/files/js/IE/jquery/jquery.dropdown.js"></script>
         <![endif]-->
         <script type="text/javascript" src="/files/js/imageflow.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function(){
-            //Larger thumbnail preview
-            $(".escondete").hide();
-            $(".primera").show();
-            $("ul.thumb li").hover(function() {
-                $(this).css({'z-index' : '10'});
-                $(this).find('img').addClass("hover").stop()
+                //Larger thumbnail preview
+                $(".escondete").hide();
+                $(".primera").show();
+                $("ul.thumb li").hover(function() {
+                    $(this).css({'z-index' : '10'});
+                    $(this).find('img').addClass("hover").stop()
                     .animate({
                         marginTop: '-75px',
                         marginLeft: '-30px',
@@ -44,8 +44,8 @@
                     }, 200);
 
                 } , function() {
-                $(this).css({'z-index' : '0'});
-                $(this).find('img').removeClass("hover").stop()
+                    $(this).css({'z-index' : '0'});
+                    $(this).find('img').removeClass("hover").stop()
                     .animate({
                         marginTop: '0',
                         marginLeft: '0',
@@ -55,8 +55,8 @@
                         height: '40px',
                         padding: '3px'
                     }, 400);
-            });
-            //Swap Image on Click
+                });
+                //Swap Image on Click
                 $("ul.thumb li a").click(function() {
                     var id = $(this).attr("id"); //Find Image Name
                     $(".escondete").hide();
@@ -65,8 +65,8 @@
                 });
 
             });
-            </script>
-            <script type='text/javascript'>
+        </script>
+        <script type='text/javascript'>
             $(document).ready(function() {
                 // OPACITY OF BUTTON SET TO 50%
                 $("#link-video").css("opacity","0.75");
@@ -74,92 +74,102 @@
                 // ON MOUSE OVER
                 $("#link-video").hover(function () {
 
-                // SET OPACITY TO 100%
-                $(this).stop().animate({
-                opacity: 1.0
-                }, "slow");
+                    // SET OPACITY TO 100%
+                    $(this).stop().animate({
+                        opacity: 1.0
+                    }, "slow");
                 },
 
                 // ON MOUSE OUT
                 function () {
 
-                // SET OPACITY BACK TO 50%
-                $(this).stop().animate({
-                opacity: 0.75
-                }, "slow");
+                    // SET OPACITY BACK TO 50%
+                    $(this).stop().animate({
+                        opacity: 0.75
+                    }, "slow");
                 });
-                });
-            </script>
-{%block extraheader%}{%endblock%}
-</head>
-<body>
-    <div id="sombratop"></div>
-    <div id="contenedor">
-        <div id="header">
-            <div id="logo">
-                <a href="/"><img src="/files/imagen/logobanner.png" alt="banner"/></a>
-            </div>
-            <div id="social">
-                <a href=""><img src="/files/imagen/buscador.png"  alt="banner"/></a>
-                <br/><br/>
-                <a href="/"><img src="/files/imagen/rss.png"  alt="buscador"/></a>
-                <a href=""><img src="/files/imagen/facebook.png"  alt="facebook"/></a>
-                <a href=""><img src="/files/imagen/twitterb.png"  alt="twitter"/></a>
-                <br/>
-            </div>
-            <div class="separador"></div>
-            <br/>
-        </div>
-        <div id="pagina">
-            <div id="menu-principal">
-            {% show_menu "Menu Principal" "menu-principal" %}
-            </div>
-            <div id="cuerpo" class="centro">
-                <div id="cuerpo-izq">
-                   {%block contenido%}{%endblock%}
+            });
+        </script>
+        {%block extraheader%}{%endblock%}
+    </head>
+    <body>
+        <div id="sombratop"></div>
+        <div id="contenedor">
+            <div id="header">
+                <div id="logo">
+                    <a href="/"><img src="/files/imagen/logobanner.png" alt="banner"/></a>
                 </div>
-                <div id="sidebar-der">
-                    <div class="bloque">
-                        <div class="titulo-bloque">ADDAC</div>
-                        <div class="contenedor-bloque" id="addac">
-                        {% show_menu "ADDAC" "sidebar" %}
-                            <br/>
-                            <div class="separador"></div>
-                        </div>
+                <div id="social">
+                    <div class="search">
+                        <form action="/busqueda/" id="cse-search-box">
+                            <div>
+                                <input type="hidden" name="cx" value="012011324828630117606:g7o2raxrioi" />
+                                <input type="hidden" name="cof" value="FORID:10" />
+                                <input type="hidden" name="ie" value="UTF-8" />
+                                <input type="text" name="q" size="31" />                                
+                            </div>
+                        </form>
+                        <script type="text/javascript" src="//www.google.com/cse/brand?form=cse-search-box&lang=es"></script>
                     </div>
-                    <div class="bloque">
-                        <div class="titulo-bloque">Zonas de Cobertura</div>
-                        <div class="contenedor-bloque" id="zonas">
-                            {% show_menu "Zonas" "sidebar-zonas" %}
-                            <br/>
-                            <div class="separador"></div>
-                        </div>
-                    </div>
-                    <div class="bloque">
-                        <div class="titulo-bloque">Videos</div>
-                        <div class="contenedor-bloque">
-                            <center><a href="/"><img id="link-video" class="" src="/files/imagen/videos2.jpg" alt="videos"/></a></center>
-                            <br/>
-                            <div class="separador"></div>
-                        </div>
-                    </div>
-                    <div class="bloque">
-                        <div class="titulo-bloque">Enlaces de interes</div>
-                        <div class="contenedor-bloque" id="enlaces">
-                            <a href="/">Cooperantes <img src="/files/imagen/cooperantesicon.png"alt="cooperantes"/></a>
-                            <a href="/">Alzar las voces <img src="/files/imagen/alzaricon.png" alt="alzar"/></a>
-                            <a href="/">Sitios amigos <img src="/files/imagen/amigosicon.png"alt="sitioamigos"/></a>
-
-                            <div class="separador"></div><br/> <br/>
-                        </div>
-                    </div>
+                    <br/><br/>
+                    <a href="/"><img src="/files/imagen/rss.png"  alt="buscador"/></a>
+                    <a href=""><img src="/files/imagen/facebook.png"  alt="facebook"/></a>
+                    <a href=""><img src="/files/imagen/twitterb.png"  alt="twitter"/></a>
+                    <br/>
                 </div>
                 <div class="separador"></div>
-                <div id="footer">
-               ADDAC - Asociación para la Diversificación y el Desarrollo Agrícola, <br>Dirección: Clínica Santa Fe 2 c al Este 1/2 c al Norte. Matagalpa, Nicaragua. Teléfono: (505) 2772-7108. Apartado postal 161.<br/> Desarrollado por SIMAS bajo plataforma Django
+                <br/>
+            </div>
+            <div id="pagina">
+                <div id="menu-principal">
+                    {% show_menu "Menu Principal" "menu-principal" %}
+                </div>
+                <div id="cuerpo" class="centro">
+                    <div id="cuerpo-izq">
+                        {%block contenido%}{%endblock%}
+                    </div>
+                    <div id="sidebar-der">
+                        <div class="bloque">
+                            <div class="titulo-bloque">ADDAC</div>
+                            <div class="contenedor-bloque" id="addac">
+                                {% show_menu "ADDAC" "sidebar" %}
+                                <br/>
+                                <div class="separador"></div>
+                            </div>
+                        </div>
+                        <div class="bloque">
+                            <div class="titulo-bloque">Zonas de Cobertura</div>
+                            <div class="contenedor-bloque" id="zonas">
+                                {% show_menu "Zonas" "sidebar-zonas" %}
+                                <br/>
+                                <div class="separador"></div>
+                            </div>
+                        </div>
+                        <div class="bloque">
+                            <div class="titulo-bloque">Videos</div>
+                            <div class="contenedor-bloque">
+                                <center><a href="/"><img id="link-video" class="" src="/files/imagen/videos2.jpg" alt="videos"/></a></center>
+                                <br/>
+                                <div class="separador"></div>
+                            </div>
+                        </div>
+                        <div class="bloque">
+                            <div class="titulo-bloque">Enlaces de interes</div>
+                            <div class="contenedor-bloque" id="enlaces">
+                                <a href="/">Cooperantes <img src="/files/imagen/cooperantesicon.png"alt="cooperantes"/></a>
+                                <a href="/">Alzar las voces <img src="/files/imagen/alzaricon.png" alt="alzar"/></a>
+                                <a href="/">Sitios amigos <img src="/files/imagen/amigosicon.png"alt="sitioamigos"/></a>
+
+                                <div class="separador"></div><br/> <br/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="separador"></div>
+                    <div id="footer">
+                        ADDAC - Asociación para la Diversificación y el Desarrollo Agrícola, <br>Dirección: Clínica Santa Fe 2 c al Este 1/2 c al Norte. Matagalpa, Nicaragua. Teléfono: (505) 2772-7108. Apartado postal 161.<br/> Desarrollado por SIMAS bajo plataforma Django
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
