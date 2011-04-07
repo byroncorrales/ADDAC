@@ -47,7 +47,7 @@ $(document).ready(function() {
             <div id="autor-title"><b>Escrito por: {{noticia.autor}}</b></div>
             <div id="categoria-title">Categoria: {{noticia.categoria}}</div>
             <div id="fecha-title"><img alt="fecha" src="/files/imagen/icon_fecha.jpg"/>{{noticia.fecha|date:"d M Y"}}</div>
-            <div id="facebook-title"><script src="http://connect.facebook.net/es_ES/all.js#xfbml=1"></script><fb:like href="http://www.addac.org.ni/noticias/{{noticia.slug}}" show_faces="true" width="320" font="trebuchet ms"></fb:like></div>
+            <div id="facebook-title"><script src="http://connect.facebook.net/es_ES/all.js#xfbml=1"></script><fb:like href="/noticias/{{noticia.slug}}" show_faces="true" width="320" font="trebuchet ms"></fb:like></div>
         </div>
         <div class="separador"></div>
     </div>
