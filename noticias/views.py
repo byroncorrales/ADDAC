@@ -13,7 +13,7 @@ def noticia_detalle(request,slug):
     '''Muestra el detalle de la noticia'''
     noticia = get_object_or_404(Noticia, slug=slug)
     #Jala las ultimas noticias relacionadas con la misma categoria y excluye a la noticia misma
-    noticia_rel = Noticia.objects.filter(categoria=noticia.categoria).exclude(id = noticia.id).order_by('-fecha','-id')[:3] 
+    noticia_rel = Noticia.objects.filter(categoria=noticia.categoria).exclude(id = noticia.id).order_by('-fecha','-id')[:4]
     dicc = {'noticia': noticia,
             'noticia_rel':noticia_rel,
            }
@@ -38,7 +38,7 @@ def noticia_lista(request):
     dicc = {'noticias': noticia,'categoria_noticia':categoria_noticia,
            }
     return direct_to_template(request, 'noticias/noticias_lista.html',dicc)
-    
+
 def noticia_lista_cat(request,cat_slug):
     '''Filtra la lista de noticias por una categoria especifica'''
     noticia_lista = Noticia.objects.filter(categoria__slug=cat_slug).order_by('-fecha','-id')

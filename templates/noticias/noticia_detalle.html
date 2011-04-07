@@ -1,45 +1,97 @@
 {%extends "base.html"%}
+{%load comments%}
 {%block extraheader%}
+<script type="text/javascript" charset="utf-8">
+
+function bindPostCommentHandler() {
+
+    $('#comment_form form input.submit-preview').remove();
+    $('#comment_form form').submit(function() {
+        $.ajax({
+            type: "POST",
+            data: $('#comment_form form').serialize(),
+            url: "{% comment_form_target %}",
+            cache: false,
+            dataType: "html",
+            success: function(html, textStatus) {
+                $('#comment_form form').replaceWith(html);
+                bindPostCommentHandler();
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $('#comment_form form').replaceWith('Error: su comentario no pudo ser guardado en estos momentos.');
+            }
+        });
+        return false;
+    });
+}
+
+$(document).ready(function() {
+    //super dirty hack! effin django comment framework
+    $("label[for='id_email']").html('E-mail');
+    bindPostCommentHandler();
+    $('#comment_form').hide()
+    $("#botoncomentar").click(function() {
+        $('#comment_form').show();
+        return false;
+    });
+});
+
+
+</script>
 {%endblock%}
 {%block contenido%}
-                    <div class="container" style ="height:200px !important;">
-                        <img id="thumb-noticia-principal" alt="noticia" src="{{noticia.imagen.url_265x200}}"/>
-                        <div id="title-container">
-                            <h1>{{noticia.titulo}}</h1>
-                            <div id="autor-title"><b>Escrito por: {{noticia.autor}}</b></div>
-                            <div id="categoria-title">Categoria: {{noticia.categoria}}</div>
-                            <div id="fecha-title"><img alt="fecha"src="icon_fecha.jpg"/>{{noticia.fecha|date:"d M Y"}}</div>
-                        </div>
-                        <div class="separador"></div>
-                    </div>
-                    <div id="body-text">
-                        <p>Turpis parturient lorem scelerisque arcu lectus tortor scelerisque? Elementum. Amet? Cum scelerisque, turpis ut magna placerat, turpis ultricies, ridiculus sed! Enim porta tristique aenean, porttitor. Ridiculus sociis nunc sit scelerisque scelerisque mattis arcu, penatibus ridiculus. Enim risus sagittis nascetur cum urna pellentesque elit dis. Ridiculus, etiam, placerat turpis, hac velit eros aenean sociis phasellus amet ut nunc, montes aliquet enim? Elementum nisi velit nec enim turpis? Elementum ultrices facilisis ac proin cum, lundium habitasse, nunc arcu. Odio, nec scelerisque natoque, massa nec integer, dignissim massa lundium vel nec habitasse aliquet dolor parturient augue in rhoncus ac, tristique integer sed vel, lorem magna aliquet nunc ut pellentesque urna et ut augue duis sed ultrices dictumst, ultricies nisi et elit tristique integer.</p>
+    <div class="container" style ="height:200px !important;">
+        <img id="thumb-noticia-principal" alt="noticia" src="{{noticia.imagen.url_265x200}}"/>
+        <div id="title-container">
+            <h1>{{noticia.titulo}}</h1>
+            <div id="autor-title"><b>Escrito por: {{noticia.autor}}</b></div>
+            <div id="categoria-title">Categoria: {{noticia.categoria}}</div>
+            <div id="fecha-title"><img alt="fecha" src="/files/imagen/icon_fecha.jpg"/>{{noticia.fecha|date:"d M Y"}}</div>
+        </div>
+        <div class="separador"></div>
+    </div>
+    <div id="body-text">
+        <div id="contenidosafe">
+       {{noticia.contenido|safe}}
+       </div>
+       <div class="separador"></div>
+       {%if noticia.tags %}
+        <div id="tags">
+            <b>Tags:</b><br/><br/>
+            {% for tag in noticia.get_tags %}
+            <a href="/tags/{{tag.id}}">{{tag}}</a>
+           {%endfor%}
+            <div class="separador"></div>
+        </div>
+        {%endif%}
+        <br/>
+        <div class="bloqueinf-noticia">
+            <div class="titulo-bloqueinf-noticia">Noticias Relacionadas</div>
+            {%for noticia_rel in noticia_rel%}
+            <a href="/noticias/{{noticia_rel.slug}}">{{noticia_rel.titulo}}</a>
+            {%endfor%}
+        </div>
+         <div class="bloqueinf-noticia commentblock">
+             <div class="titulo-bloqueinf-noticia">Comentarios</div>
+                 {% get_comment_count for noticia as comment_count %}
+                 <p><i>Esta noticia tiene {{ comment_count }} comentarios.</i></p>
+                 <a id="botoncomentar" href="#"><img align="right" src="/files/imagen/comment.jpg"></a><div class="separador"></div>
+                <div id="comment_form" class="der">
+                 <br>
+                    {% render_comment_form for noticia %}
+                </div>
+                 {% get_comment_list for noticia as comment_list %}
+                 {% for comment in comment_list %}
+                        <p>
+                        {%if comment.user_url%}
+                            <a href="{{comment.user_url}}"><b>{{comment.user_name}}</b></a><br>
+                        {%else%}
+                            <b>{{comment.user_name}}</b><br>
+                        {%endif%}
+                        {{comment.comment}}</p>
+                {% endfor %}
 
-                        <p>Elit aliquet. Vel elementum tincidunt, vel amet dignissim a ut sit proin porttitor, ac sit! Vut vel? Pulvinar adipiscing, ultrices porta a dignissim tempor montes cras scelerisque porta hac sociis mattis, ac? Nunc? Nisi aenean in, scelerisque in odio pellentesque integer. Lorem montes augue est lacus adipiscing lorem aliquet mid ridiculus pellentesque dapibus quis porttitor cursus magna in integer. Risus integer sit eu, pulvinar sit, nisi eu lundium magnis penatibus cum ac est, ac nunc, et magna eros mattis, dignissim sit, odio, duis! Turpis magna! Magna mus cursus turpis, aliquam aenean velit lacus eu pellentesque in elit egestas, magna! Natoque, porta integer lundium a et hac sed platea ac! Ut lacus enim. Et, lundium dis mid in velit nunc.</p>
+         </div>
 
-                        <p>Augue dis platea sagittis, ac non amet. Sociis in, vel urna. Aliquam? Turpis, lectus porta cras elementum et vel et rhoncus proin risus etiam natoque porta magna ultricies ac, ultrices ultrices, phasellus! Aliquet! Integer mus nunc velit est magna! Adipiscing dictumst tincidunt dolor nunc. Diam auctor porttitor, lacus adipiscing auctor elementum sit rhoncus! Ut egestas nec ultricies etiam, lundium, aliquet etiam? Pulvinar magnis integer et, et hac, arcu adipiscing, odio? Dictumst mid amet aliquam elementum? Eros sociis amet non nascetur augue. Pid turpis est montes scelerisque, magnis odio est. Habitasse? Sagittis, ultrices. Sed porta cras, elementum cursus facilisis tortor, elementum velit, magnis porttitor, montes dis porta magnis, urna rhoncus? Integer, elementum, mus turpis, in, a porttitor! Parturient? Facilisis nunc.</p>
-                        <div id="tags">
-                            <b>Tags:</b><br/><br/>
-                            <a href="#">Tag 1</a>
-                            <a href="#">Nicaragua</a>
-                            <a href="#">Matagalpa</a>
-                            <a href="#">Comunicacion</a>
-
-                            <div class="separador"></div>
-                        </div>
-                        <br/>
-                        <div class="bloqueinf-noticia">
-                            <div class="titulo-bloqueinf-noticia">Noticias Relacionadas</div>
-                            <a href="#">Pulvinar, massa porttitor ac dictumst, augue  eros et arcu</a>
-                            <a href="#">Pulvinar, massa porttitor ac dictumst, augue  eros et arcu</a>
-                            <a href="#">Pulvinar, massa porttitor ac dictumst, augue  eros et arcu</a>
-                        </div>
-                         <div class="bloqueinf-noticia">
-                             <div class="titulo-bloqueinf-noticia">Comentarios</div>
-                             <p><b>byron</b><br/>
-                             Ut mauris lorem habitasse massa hac, sociis ut lundium mattis nisi porta, vel etiam? Scelerisque arcu augue placerat lacus natoque dapibus ac, vel,</p>
-                            <p><b>byron</b><br/>
-                             Ut mauris lorem habitasse massa hac, sociis ut lundium mattis nisi porta, vel etiam? Scelerisque arcu augue placerat lacus natoque dapibus ac, vel,</p>
-                        </div>
-                    </div>
+    </div>
 {%endblock%}

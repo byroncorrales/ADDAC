@@ -530,6 +530,7 @@ ul.thumb li img.hover {
 .adjunto{
     border-top:#dedede 1px solid;
     padding:3px;
+    font-size:12px;
 }
 
 .adjunto a, .adjunto a:visited{
@@ -537,6 +538,7 @@ ul.thumb li img.hover {
     font-family:Georgia;
     display:block;
     float:right;
+    font-size:13px;
 }
 
 .adjunto a:hover{
@@ -547,7 +549,7 @@ ul.thumb li img.hover {
 
 
 #body-text table {
-    font-family: verdana,arial,sans-serif;
+    font-family: Trebuchet MS, Helvetica, sans-serif;;
     font-size:11px;
     color:#333333;
     border-width: 1px;
@@ -568,4 +570,58 @@ ul.thumb li img.hover {
     padding: 8px;
     border-style: solid;
     border-color: #999999;
+}
+
+.commentblock a{
+    background:none;
+    display:inline;
+    margin:0px;
+    padding-left:0px;
+    margin-bottom:0px;
+    font-family:Trebuchet MS, Helvetica, sans-serif;;
+    color:#2B657B;
+    font-size:12px;
+}
+
+#comment_form{
+width:280px
+}
+
+#comment_form label{width:60px;display:block;}
+
+#comment_form input, #comment_form textarea{
+    border: #BFBFBF 1px solid;
+    padding-left:4px;
+    border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+ width:100%;
+ }
+
+#comment_form .errorlist{
+list-style-type: none !important;
+list-style-position: inside !important;
+}
+#comment_form .errorlist li{
+    color:#E44040;
+}
+
+#comment_form .submit input{
+    background:#5C8137;
+    color:#fff;
+    border:0;
+    padding:6px;
+    border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+}
+#comment_form h1{
+background:#ecfa88;
+border:#cdde55 1px solid;
+padding:4px;
+color:#333;
+}
+
+#contenidosafe img{
+    margin:5px;
 }
