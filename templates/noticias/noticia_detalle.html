@@ -48,7 +48,7 @@ $(document).ready(function() {
             <div id="categoria-title">Categoria: {{noticia.categoria}}</div>
             <div id="fecha-title"><img alt="fecha" src="/files/imagen/icon_fecha.jpg"/>{{noticia.fecha|date:"d M Y"}}</div>
             <div id="facebook-title">
-            <iframe src="http://www.facebook.com/plugins/like.php?href=http://www.addac.org.ni/noticias/{{noticia.slug}}&amp;layout=standard&amp;show_faces=true&amp;width=320&amp;action=like&amp;font=trebuchet+ms&amp;colorscheme=light&amp;height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:320px; height:80px;" allowTransparency="true"></iframe>
+            <script src="http://connect.facebook.net/es_ES/all.js#xfbml=1"></script><fb:like href="" show_faces="true" width="320" font="trebuchet ms"></fb:like>
             </div>
         </div>
         <div class="separador"></div>
