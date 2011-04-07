@@ -11,7 +11,7 @@
                         <div id="main_view">
                             {%for banner in banner %}
                                 {% if forloop.first %}
-                                    <div id="programa1" class="escondete primera">
+                                    <div id="programa{{banner.id}}" class="escondete primera">
                                         <a href="{{banner.url}}" target="_blank">
                                         <img src="{{banner.imagen.url_540x275}}" alt="" />
                                         <div class="programatext">
