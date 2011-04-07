@@ -24,7 +24,7 @@
         <script type="text/javascript" src="/files/js/IE/jquery/jquery.dropdown.js"></script>
         <![endif]-->
         <script type="text/javascript" src="/files/js/imageflow.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function(){
                 //Larger thumbnail preview
@@ -67,7 +67,7 @@
             });
         </script>
         <script type='text/javascript'>
-            $(document).ready(function() {
+            $(document).ready(function(){
                 if($('#cse-search-box input[name="q"]').val()==''){
                     $('#cse-search-box input[name="q"]').val('Buscar');
                 }
@@ -78,25 +78,27 @@
                     if($(this).val()=='Buscar'){$(this).val('')}
                 });
                 $('#cse-search-box input[name="q"]').blur(function(){
-                if($(this).val()==''){$(this).val('Buscar')}
+                    if($(this).val()==''){$(this).val('Buscar')}
+                });
             });
-            // OPACITY OF BUTTON SET TO 50%
-            $("#link-video").css("opacity","0.75");
-            // ON MOUSE OVER
-            $("#link-video").hover(function () {
-                // SET OPACITY TO 100%
-                $(this).stop().animate({
-                    opacity: 1.0
-                }, "slow");
-            },
-            // ON MOUSE OUT
-            function () {
-                // SET OPACITY BACK TO 50%
-                $(this).stop().animate({
-                    opacity: 0.75
-                }, "slow");
+            $(document).ready(function() {                
+                // OPACITY OF BUTTON SET TO 50%
+                $("#link-video").css("opacity","0.75");
+                // ON MOUSE OVER
+                $("#link-video").hover(function () {
+                    // SET OPACITY TO 100%
+                    $(this).stop().animate({
+                        opacity: 1.0
+                    }, "slow");
+                },
+                // ON MOUSE OUT
+                function () {
+                    // SET OPACITY BACK TO 50%
+                    $(this).stop().animate({
+                        opacity: 0.75
+                    }, "slow");
+                });
             });
-        });
         </script>
         <script type="text/javascript">
          var _gaq = _gaq || [];
