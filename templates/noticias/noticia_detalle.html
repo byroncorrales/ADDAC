@@ -1,5 +1,6 @@
 {%extends "base.html"%}
 {%load comments%}
+{%block title%}{{noticia.titulo}}{%endblock%}
 {%block extraheader%}
 <script type="text/javascript" charset="utf-8">
 
@@ -39,6 +40,7 @@ $(document).ready(function() {
 
 </script>
 {%endblock%}
+
 {%block contenido%}
     <div class="container" style ="height:200px !important;">
         <img id="thumb-noticia-principal" alt="noticia" src="{{noticia.imagen.url_265x200}}"/>
