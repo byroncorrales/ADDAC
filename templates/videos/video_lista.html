@@ -16,17 +16,20 @@
     <div id="body-text">
     {%for video in videos%}
     <div class="elemento-lista">
-    <a id="lista-flecha" href="/videos/{{video.slug}}"></a>
-        <div class="thumb-noticia-index" style="height:50px !important;">
+
+        <div class="izq" style="height:120px !important; ">
             <a href="/videos/{{video.slug}}">
-            <img class="izq" width="100" height="100" src="{{video.video|magicthumbnail}}"  alt="thumb"/>
+            <img class="izq"src="/files/imagen/bordevideo.png"/><img class="izq" width="150" height="125" src="{{video.video|magicthumbnail}}"  alt="thumb"/><img class="izq"src="/files/imagen/bordevideo.png"/>
             </a>
         </div>
-        <div class="titulo-noticia-index izq" style="width:400px !important;"><a href="/videos/{{video.slug}}">{{video.titulo}}</a></div>
-        <div class="extra-noticia">
-            <i>{{video.fecha|date:"d M Y"}}</i>
+        <div class="titulo-noticia-index izq" style="width:350px !important; margin-left:15px;"><a href="/videos/{{video.slug}}">{{video.titulo}}</a></div>
+        <div class="descripcion-video izq" style="width:350px !important;  margin-left:15px;">
+         {{video.descripcion|safe|truncatewords_html:33}}<br>
         </div>
-
+        <div class="extra-noticia" style="width:350px !important;  margin-left:15px;">
+            <br><i>{{video.fecha|date:"d M Y"}}</i> |
+            <a href="/videos/{{video.slug}}">Reproducir &#187;</a>
+        </div>
         <div class="separador"></div>
     </div>
     {%endfor%}
