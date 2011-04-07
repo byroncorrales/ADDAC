@@ -23,7 +23,6 @@ def noticia_lista(request,tipo):
     '''Vista para mostrar la lista de noticia'''
     noticia_lista = Noticia.objects.filter(tipo=tipo).order_by('-fecha','-id')
     paginator = Paginator(noticia_lista, 5)
-    categoria_noticia = CategoriaNoticia.objects.all()
 
     try:
         page = int(request.GET.get('page', '1'))
@@ -35,7 +34,7 @@ def noticia_lista(request,tipo):
     except (EmptyPage, InvalidPage):
         noticia = paginator.page(paginator.num_pages)
 
-    dicc = {'noticias': noticia,'categoria_noticia':categoria_noticia,
+    dicc = {'noticias': noticia,'tipo':tipo,
            }
     return direct_to_template(request, 'noticias/noticia_lista.html',dicc)
 
