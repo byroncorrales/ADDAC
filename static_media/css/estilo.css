@@ -563,7 +563,7 @@ ul.thumb li img.hover {
     border-color: #999999;
 }
 #body-text table td {
-    background:#dcddc0 url('/files/imagen/cell-grey.jpg');
+    background:#fff;
     border-width: 1px;
     padding: 8px;
     border-style: solid;
