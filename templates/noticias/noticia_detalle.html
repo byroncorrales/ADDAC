@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 {%block contenido%}
     <div class="container" style ="height:200px !important;">
-        <img id="thumb-noticia-principal" alt="noticia" src="{{noticia.imagen.url_265x200}}"/>
+
         <div id="title-container">
             <h1>{{noticia.titulo}}</h1>
             <div id="autor-title"><b>Escrito por: {{noticia.autor}}</b></div>
@@ -53,6 +53,7 @@ $(document).ready(function() {
             <script src="http://connect.facebook.net/es_ES/all.js#xfbml=1"></script><fb:like href="" show_faces="true" width="320" font="trebuchet ms"></fb:like>
             </div>
         </div>
+        <img id="thumb-noticia-principal" alt="noticia" src="{{noticia.imagen.url_265x200}}"/>
         <div class="separador"></div>
     </div>
     <div id="body-text">
