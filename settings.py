@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'addac.enlaces',
     'addac.banners',
     'addac.pagination',
+    'addac.magicembed',
     # Uncomment the next line to enable the admin:
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',

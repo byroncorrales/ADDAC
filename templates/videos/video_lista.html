@@ -1,0 +1,34 @@
+{%extends "base.html"%}
+{%load comments%}
+{%load magicembed%}
+{%block title%}Videos{%endblock%}
+{%block extraheader%}
+{%endblock%}
+
+{%block contenido%}
+    <div class="container" style ="height:70px !important;">
+        <br>
+        <div id="title-container-interna">
+        <div id="title-menu-padre">Videos</div>
+            <h1>Galeria</i></h1>
+        </div>
+    </div>
+    <div id="body-text">
+    {%for video in videos%}
+    <div class="elemento-lista">
+    <a id="lista-flecha" href="/videos/{{video.slug}}"></a>
+        <div class="thumb-noticia-index" style="height:50px !important;">
+            <a href="/videos/{{video.slug}}">
+            <img class="izq" width="100" height="100" src="{{video.video|magicthumbnail}}"  alt="thumb"/>
+            </a>
+        </div>
+        <div class="titulo-noticia-index izq" style="width:400px !important;"><a href="/videos/{{video.slug}}">{{video.titulo}}</a></div>
+        <div class="extra-noticia">
+            <i>{{video.fecha|date:"d M Y"}}</i>
+        </div>
+
+        <div class="separador"></div>
+    </div>
+    {%endfor%}
+    </div>
+{%endblock%}

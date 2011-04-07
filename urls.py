@@ -15,9 +15,10 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the next line to enable the admin:    
+    # Uncomment the next line to enable the admin:
     url(r'^', include('paginas.urls')),
     url(r'^', include('noticias.urls')),
+    url(r'^', include('videos.urls')),
     url(r'^admin/filebrowser/', 'addac.extras.views.subir_imagen'),
     url(r'^admin/settings/$', include('livesettings.urls')),
     url(r'^admin/', include(admin.site.urls)),

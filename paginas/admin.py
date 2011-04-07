@@ -11,7 +11,7 @@ class AdjuntoInline(generic.GenericTabularInline):
 class ImagenInline(admin.TabularInline):
     model = PaginaImagen
     extra = 1
-    max_num = 5
+    max_num = 10
     template = "tabular.html"
 
 class PaginaAdmin(admin.ModelAdmin):
