@@ -16,6 +16,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^', include('paginas.urls')),
+    url(r'^', include('noticias.urls')),
     url(r'^admin/filebrowser/', 'addac.extras.views.subir_imagen'),
     url(r'^admin/settings/$', include('livesettings.urls')),
     url(r'^admin/', include(admin.site.urls)),
