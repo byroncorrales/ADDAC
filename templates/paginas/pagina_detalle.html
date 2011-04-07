@@ -27,7 +27,10 @@
                         </ul>
                     </div>
                         <div id="body-right">
-                            {{pagina_detalle.contenido|safe}}
+                            <div id="contenidosafe">
+                           {{pagina_detalle.contenido|safe}}
+                           </div>
+                           <div class="separador"></div>
                             {%if pagina_detalle.adjunto.all%}
                             <div id="titulo-adjuntos">ADJUNTOS</div><br>
                             {%for adjunto in pagina_detalle.adjunto.all%}

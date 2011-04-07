@@ -62,6 +62,14 @@ $(document).ready(function() {
        {{noticia.contenido|safe}}
        </div>
        <div class="separador"></div>
+       {%if noticia.adjunto.all%}
+           <div id="titulo-adjuntos">ADJUNTOS</div><br>
+           {%for adjunto in noticia.adjunto.all%}
+              <div class="adjunto"><a href="/files/{{adjunto.adjunto}}">Descargar</a><img src="/files/imagen/{{adjunto.tipo}}.png"> {{adjunto.nombre}}<div class="espaciador"></div></div>
+           {%endfor%}
+           <br>
+       {%endif%}
+        <br>
        {%if noticia.tags %}
         <div id="tags">
             <b>Tags:</b><br/><br/>
