@@ -1,4 +1,5 @@
 {%extends "base.html"%}
+{% load pagination_tags %}
 {%load comments%}
 {%block title%}{{noticia.titulo}}{%endblock%}
 {%block extraheader%}
@@ -13,7 +14,8 @@
         </div>
     </div>
     <div id="body-text">
-    {%for noticia in noticias.object_list%}
+    {% autopaginate noticias 6%}
+    {%for noticia in noticias%}
     <div class="elemento-lista">
     <a id="lista-flecha" href="/noticias/{{noticia.slug}}"></a>
         <div class="thumb-noticia-index" style="height:50px !important;"><a href="/noticias/{{noticia.slug}}"><img class="izq"  src="{{noticia.imagen.url_62x48}}"  alt="thumb"/></a></div>
@@ -25,7 +27,7 @@
 
         <div class="separador"></div>
     </div>
-
     {%endfor%}
+    {%paginate%}
     </div>
 {%endblock%}

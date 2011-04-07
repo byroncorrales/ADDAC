@@ -81,6 +81,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'addac.pagination.middleware.PaginationMiddleware'
 )
 
 ROOT_URLCONF = 'addac.urls'
@@ -92,6 +93,13 @@ TEMPLATE_DIRS = (
     PROJECT_DIR + '/templates',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+)
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -113,6 +121,7 @@ INSTALLED_APPS = (
     'addac.videos',
     'addac.enlaces',
     'addac.banners',
+    'addac.pagination',
     # Uncomment the next line to enable the admin:
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',

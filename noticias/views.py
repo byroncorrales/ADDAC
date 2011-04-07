@@ -21,39 +21,16 @@ def noticia_detalle(request,slug):
 
 def noticia_lista(request,tipo):
     '''Vista para mostrar la lista de noticia'''
-    noticia_lista = Noticia.objects.filter(tipo=tipo).order_by('-fecha','-id')
-    paginator = Paginator(noticia_lista, 5)
-
-    try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
-
-    try:
-        noticia = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        noticia = paginator.page(paginator.num_pages)
-
-    dicc = {'noticias': noticia,'tipo':tipo,
+    noticias = Noticia.objects.filter(tipo=tipo).order_by('-fecha','-id')
+    dicc = {'noticias': noticias,'tipo':tipo,
            }
     return direct_to_template(request, 'noticias/noticia_lista.html',dicc)
 
 def noticia_lista_cat(request,cat_slug):
     '''Filtra la lista de noticias por una categoria especifica'''
-    noticia_lista = Noticia.objects.filter(categoria__slug=cat_slug).order_by('-fecha','-id')
+    noticias = Noticia.objects.filter(categoria__slug=cat_slug).order_by('-fecha','-id')
     categoria = CategoriaNoticia.objects.get(slug=cat_slug)
-    paginator = Paginator(noticia_lista, 5)
 
-    try:
-        page = int(request.GET.get('page', '1'))
-    except ValueError:
-        page = 1
-
-    try:
-        noticia = paginator.page(page)
-    except (EmptyPage, InvalidPage):
-        noticia = paginator.page(paginator.num_pages)
-
-    dicc = {'noticias': noticia,'categoria':categoria,
+    dicc = {'noticias': noticias,'categoria':categoria,
            }
     return direct_to_template(request, 'noticias/noticia_lista.html',dicc)
