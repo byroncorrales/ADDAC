@@ -33,6 +33,12 @@ class Adjunto(models.Model):
         verbose_name = "Adjunto"
         verbose_name_plural = "Adjuntos"
 
+    def tipo(self):
+        '''Devuelve la extension del archivo'''
+        cadena = len(str(self.adjunto))
+        tipo = str(self.adjunto)[cadena-3:cadena]
+        return tipo
+
 class ImagenAdjunta(models.Model):
     imagen = models.ImageField(upload_to='attachments/imagenes')
 

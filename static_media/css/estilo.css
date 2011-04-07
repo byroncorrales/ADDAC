@@ -446,6 +446,18 @@ ul.thumb li img.hover {
     font-size:12px;
 }
 
+#body-text ul{
+    list-style-type: circle;
+    list-style-position: inside;
+    line-height: 1.8;
+}
+
+#body-text ol{
+    list-style-type: decimal;
+    list-style-position: outside;
+    line-height: 1.8;
+}
+
 #tags{
     text-align: left;
 }
@@ -509,3 +521,28 @@ ul.thumb li img.hover {
     width:380px;
     font-size:13px;
 }
+
+#titulo-adjuntos{
+    font-size:15px;
+    margin-top:25px;
+}
+
+.adjunto{
+    border-top:#dedede 1px solid;
+    padding:3px;
+}
+
+.adjunto a, .adjunto a:visited{
+    color:#2b5768;
+    font-family:Georgia;
+    display:block;
+    float:right;
+}
+
+.adjunto a:hover{
+    color:#3A809C;
+}
+
+.adjunto img{float:left;margin-right:5px;}
+
+
