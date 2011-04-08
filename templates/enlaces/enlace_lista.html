@@ -17,14 +17,17 @@
                     <tr>
                     {%if not centinela %}
                         <th>Logo</th>
+                        <th>País</th>
                     {%endif%}
                         <th>Nombre</th>
                         <th>Sitio Web</th>
+
                     </tr>
                     {%for enlace in enlace %}
                      <tr>
                         {%if not centinela %}
                          <td><img src="{{enlace.logo.url_180x180}}"></td>
+                         <td><img src="{{enlace.pais}}"></td>
                          {%endif%}
                          <td>{{enlace.nombre}}</td>
                          <td><a href="{{enlace.web}}">{{enlace.web}}</a></td>

@@ -8,6 +8,7 @@ class Cooperante(models.Model):
     nombre = models.CharField('Nombre Cooperante', max_length=200, unique=True)
     logo = ImageWithThumbsField(upload_to=get_image_path, sizes=((250, 250), (180, 180)),help_text="Resolución 400x400")
     web = models.URLField('Sitio Web' ,help_text=" Debe cumplir con el formato 'http://www.dominio.com'",blank=True, null=True)
+    pais = models.CharField('Pais', max_length=200)
     imgDir = 'attachments/cooperantes'
 
     def __unicode__(self):
