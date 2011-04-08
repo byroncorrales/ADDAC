@@ -80,3 +80,9 @@ class Publicacion(models.Model):
     #metodo para obtener el nombre del objeto
     def get_name(self):
         return self.titulo
+
+    def ext(self):
+        '''Devuelve la extension del archivo'''
+        cadena = len(str(self.publicacion))
+        ext = str(self.publicacion)[cadena-3:cadena]
+        return ext

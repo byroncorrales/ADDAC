@@ -10,7 +10,7 @@ from addac.publicaciones.models import Publicacion
 
 def publicacion_detalle(request,slug):
     '''Muestra el detalle de una publicacion'''
-    publicacion = get_object_or_404(Boletin, slug=slug)
+    publicacion = get_object_or_404(Publicacion, slug=slug)
     dicc = {'publicacion': publicacion,
            }
     return direct_to_template(request, 'publicaciones/publicacion_detalle.html',dicc)

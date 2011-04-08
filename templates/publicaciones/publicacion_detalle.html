@@ -1,0 +1,39 @@
+{%extends "base.html"%}
+{%block extraheader%}
+{%endblock%}
+{%block contenido%}
+      <div class="container" style ="height:70px !important;">
+          <br>
+          <div id="title-container-interna">
+          <div id="title-menu-padre">Publicaciones</div>
+              <h1>{{publicacion.titulo}}</h1>
+          </div>
+      </div>
+      <div id="body-text">
+          <div id="body-right" style="width:100% !important;">
+               <img style="float:left; margin:5px;"src="{{publicacion.imagen.url_156x192}}">
+              <p>
+                  <b>Organizado como:</b> {{publicacion.get_cidoc_display}}<br>
+                  <b>Tipo:</b> {{publicacion.get_tipo_display}}<br>
+                  <b>Publicado:</b> {{publicacion.fecha|date:"d M Y"}}<br><br>
+                  {{publicacion.descripcion|safe}}
+             </p>
+               {%if publicacion.publicacion %}
+              <div id="titulo-adjuntos">ADJUNTOS</div><br>
+                  <div class="adjunto"><img src="/files/imagen/{{publicacion.ext}}.png"><div class="descarga-adjunto"><a style="float:left !important;" href="/files/{{publicacion.publicacion}}">Descargar</a></div></div>
+              <br>
+              {%endif%}
+              <br>
+          </div>
+          <div class="espaciador"></div>
+           {%if publicacion.tags %}
+            <div id="tags">
+                <b>Tags:</b><br/><br/>
+                {% for tag in publicacion.get_tags %}
+                <a href="/tags/{{tag.id}}">{{tag}}</a>
+               {%endfor%}
+                <div class="separador"></div>
+            </div>
+            {%endif%}
+      </div>
+ {%endblock%}
