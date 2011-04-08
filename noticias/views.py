@@ -18,7 +18,14 @@ def noticia_detalle(request,slug):
            }
     return direct_to_template(request, 'noticias/noticia_detalle.html',dicc)
 
-def noticia_lista(request,tipo):
+def noticia_lista(request):
+    '''Vista para mostrar la lista de noticia'''
+    noticias = Noticia.objects.all().order_by('-fecha','-id')
+    dicc = {'noticias': noticias,
+           }
+    return direct_to_template(request, 'noticias/noticia_lista.html',dicc)
+
+def noticia_lista_tipo(request,tipo):
     '''Vista para mostrar la lista de noticia'''
     noticias = Noticia.objects.filter(tipo=tipo).order_by('-fecha','-id')
     dicc = {'noticias': noticias,'tipo':tipo,

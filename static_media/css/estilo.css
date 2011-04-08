@@ -630,6 +630,16 @@ color:#333;
     margin:5px;
 }
 
+#contenidosafe a, #contenidosafe a:visited{
+    color:#2b5768;
+    font-family:Georgia;
+    font-size:13px;
+}
+
+#contenidosafe a:hover{
+    color:#3A809C;
+}
+
 .elemento-lista{
     padding-bottom:12px;
     border-bottom:#e5e5e5 1px solid;

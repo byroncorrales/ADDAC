@@ -1,0 +1,38 @@
+{%extends "base.html"%}
+{%block extraheader%}
+{%endblock%}
+{%block contenido%}
+         <div class="container" style ="height:70px !important;">
+             <br>
+             <div id="title-container-interna">
+             <div id="title-menu-padre">Enlaces</div>
+                 <h1>tipo</h1>
+             </div>
+         </div>
+         <div id="body-text">
+             <div id="body-right" style="width:100% !important;">
+                <div id="contenidosafe">
+                 <table>
+                    <tr>
+                    {%if not centinela %}
+                        <th>Logo</th>
+                    {%endif%}
+                        <th>Nombre</th>
+                        <th>Sitio Web</th>
+                    </tr>
+                    {%for enlace in enlace %}
+                     <tr>
+                        {%if not centinela %}
+                         <td><img src="{{enlace.logo.url_180x180}}"></td>
+                         {%endif%}
+                         <td>{{enlace.nombre}}</td>
+                         <td><a href="{{enlace.web}}">{{enlace.web}}</a></td>
+                     </tr>
+                     {%endfor%}
+
+                 </table>
+                </div>
+             </div>
+             <div class="espaciador"></div>
+         </div>
+ {%endblock%}

@@ -42,7 +42,9 @@
                         <div class="espaciador"></div>
                      {%else%}
                         <div id="body-right" style="width:100% !important;">
+                            <div id="contenidosafe">
                             {{pagina_detalle.contenido|safe}}
+                            </div>
                             {%if pagina_detalle.adjunto.all%}
                             <div id="titulo-adjuntos">ADJUNTOS</div><br>
                             {%for adjunto in pagina_detalle.adjunto.all%}
