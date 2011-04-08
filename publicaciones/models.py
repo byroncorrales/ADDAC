@@ -19,6 +19,7 @@ PUBLICACION_CHOICES = (
     (2, 'Revistas'),
     (3, 'Nuestras Experiencias'),
     (4, 'Libros'),
+    (5, 'Historias de Exito')
 )
 
 ORGANIZAR_CHOICES = (

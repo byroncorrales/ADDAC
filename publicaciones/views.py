@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response, get_object_or_404, get_list_or_
 from django.views.generic.simple import direct_to_template
 from django.core.exceptions import ViewDoesNotExist
 
-from publicaciones.models import *
+from addac.publicaciones.models import Publicacion
 
 def publicacion_detalle(request,slug):
     '''Muestra el detalle de una publicacion'''
@@ -18,6 +18,22 @@ def publicacion_detalle(request,slug):
 def publicacion_lista(request):
     '''Vista para mostrar la lista de publicaciones'''
     publicacion = Publicacion.objects.all().order_by('-fecha','-id')
+
+    dicc = {'publicacion': publicacion,
+           }
+    return direct_to_template(request, 'publicaciones/publicacion_lista.html',dicc)
+
+def publicacion_lista_org(request,org):
+    '''Vista para mostrar la lista de publicaciones organizadas por CEDOC o ADDAC'''
+    publicacion = Publicacion.objects.filter(cidoc = org).order_by('-fecha','-id')
+
+    dicc = {'publicacion': publicacion,
+           }
+    return direct_to_template(request, 'publicaciones/publicacion_lista.html',dicc)
+
+def publicacion_lista_tipo(request,tipo):
+    '''Vista para mostrar la lista de publicaciones organizadas por CEDOC o ADDAC'''
+    publicacion = Publicacion.objects.filter(tipo = tipo).order_by('-fecha','-id')
 
     dicc = {'publicacion': publicacion,
            }

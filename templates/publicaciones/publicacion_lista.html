@@ -13,10 +13,10 @@
         </div>
     </div>
     <div class="filtro-publicacion">
-        <b>Filtrar por </b> | <a href="">Adquisiciones CEDOC</a> | <a href="">Publicaciones ADDAC</a>
+        <b>Filtrar por </b> | <a href="/publicaciones/organizar/1">Adquisiciones CEDOC</a> | <a href="/publicaciones/organizar/2">Publicaciones ADDAC</a>
     </div>
     <div class="filtro-publicacion">
-        <b>Organizar por </b> | <a href="">Boletines</a> | <a href="">Experiencias</a>  | <a href="">Historias de Exito</a>  | <a href="">Revistas</a>  | <a href="">Libros</a>
+        <b>Organizar por </b> | <a href="/publicaciones/tipo/1">Boletines</a> | <a href="/publicaciones/tipo/2">Revistas</a>  | <a href="/publicaciones/tipo/3">Nuestras Experiencias</a>  | <a href="/publicaciones/tipo/4">Libros</a>  | <a href="/publicaciones/tipo/5">Historias de Exito</a>
     </div>
     <div id="body-text">
     {% autopaginate publicacion 8%}
@@ -30,7 +30,7 @@
         <div class="titulo-noticia-index izq" style="width:300px !important;"><a href="/publicaciones/{{pub.slug}}">{{pub.titulo}}</a></div>
         <div class="izq" style="width:490px !important;"><p>{{pub.descripcion|safe|truncatewords_html:24}}</p></div>
         <div class="extra-noticia" style="font-size:13px; width:280px !important;">
-            <a href="/publicaciones/tipo/{{pub.tipo}}">Descargar &#187;</a>
+            <a href="/publicaciones/{{pub.slug}}">Descargar &#187;</a>
         </div>
         <div class="separador"></div>
     </div>

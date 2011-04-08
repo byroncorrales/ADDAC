@@ -4,5 +4,6 @@ from models import Publicacion
 
 urlpatterns = patterns('publicaciones.views',
     (r'^publicaciones/$', 'publicacion_lista'),
-    #(r'^boletines/(?P<slug>[-\w]+)/$', 'boletin_detalle'),
+    (r'^publicaciones/organizar/(?P<org>[-\w]+)/$', 'publicacion_lista_org'),
+    (r'^publicaciones/tipo/(?P<tipo>[-\w]+)/$', 'publicacion_lista_tipo'),
 )

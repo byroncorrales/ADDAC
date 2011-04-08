@@ -18,7 +18,7 @@ def inicio(request):
     noticia = Noticia.objects.filter(tipo = 1).order_by('-fecha', '-id')[:4]
     noticia_inov = Noticia.objects.filter(tipo = 2).order_by('-fecha', '-id')[:1]
     banner = Banner.objects.all()
-    publicacion = Publicacion.objects.filter(cidoc = True).order_by('-fecha', '-id')[:9]
+    publicacion = Publicacion.objects.filter(cidoc = 1).order_by('-fecha', '-id')[:9]
     dicc = {
         'noticia':noticia,
         'noticia_inov':noticia_inov,
