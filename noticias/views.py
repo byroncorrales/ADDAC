@@ -20,7 +20,7 @@ def noticia_detalle(request,slug):
 
 def noticia_lista(request):
     '''Vista para mostrar la lista de noticia'''
-    noticias = Noticia.objects.all().order_by('-fecha','-id')
+    noticias = Noticia.objects.all().order_by('-fecha','-id')[3]
     dicc = {'noticias': noticias,
            }
     return direct_to_template(request, 'noticias/noticia_lista.html',dicc)
