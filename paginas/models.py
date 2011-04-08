@@ -34,7 +34,7 @@ class Pagina(models.Model):
 class PaginaImagen(models.Model):
     '''fotos para las paginas'''
     titulo = models.CharField('Título', max_length = 100,blank = False, null = False)
-    imagen = ImageWithThumbsField(upload_to=get_image_path, sizes=((100, 100), (180, 250), (640, 480)))
+    imagen = ImageWithThumbsField(upload_to=get_image_path, sizes=((100, 100), (180, 250), (640, 480)), help_text="Resolución 640x480")
     pagina = models.ForeignKey(Pagina)
     imgDir = 'attachments/imagenes/pagina'
 

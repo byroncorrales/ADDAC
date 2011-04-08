@@ -33,7 +33,7 @@ class Publicacion(models.Model):
     slug = models.SlugField(max_length = 200, unique = True,help_text = 'unico Valor',editable=False)
     fecha = models.DateField('Fecha',blank = False, null = False)
     tipo = models.IntegerField('tipo',choices=PUBLICACION_CHOICES)
-    imagen = ImageWithThumbsField('Imagen portada',upload_to=get_image_path, sizes=((156,192),(90,110)), help_text="Imágen de portada")
+    imagen = ImageWithThumbsField('Imagen portada',upload_to=get_image_path, sizes=((156,192),(90,110)), help_text="Imágen de portada, Resolución 250 x 305")
     publicacion = ContentTypeRestrictedFileField(upload_to = get_file_path, content_types=['application/pdf', 'application/zip','application/vnd.ms-powerpoint','application/vnd.ms-excel','application/msword','application/vnd.oasis.opendocument.text','application/vnd.oasis.opendocument.spreadsheet','application/vnd.oasis.opendocument.presentation'],max_upload_size=12582912, help_text='Solo se permiten archivos .doc .xls .ppt .docx .xlsx .pptx .pdf .zip .odp .odt .ods , tamaño máximo 12MB',blank = True, null = True)
     cidoc = models.IntegerField('Organizar en', choices=ORGANIZAR_CHOICES, help_text="Seleccionar si pertenece a CEDOC o a ADDAC")
     descripcion = models.TextField('Descripción',blank = True, null = True)

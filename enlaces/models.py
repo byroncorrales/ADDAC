@@ -6,7 +6,7 @@ from addac.utils import get_image_path
 class Cooperante(models.Model):
     '''Modelo que representa los enlaces a cooperantes'''
     nombre = models.CharField('Nombre Cooperante', max_length=200, unique=True)
-    logo = ImageWithThumbsField(upload_to=get_image_path, sizes=((250, 250), (180, 180)))
+    logo = ImageWithThumbsField(upload_to=get_image_path, sizes=((250, 250), (180, 180)),help_text="Resolución 400x400")
     web = models.URLField('Sitio Web' ,help_text=" Debe cumplir con el formato 'http://www.dominio.com'",blank=True, null=True)
     imgDir = 'attachments/cooperantes'
 
