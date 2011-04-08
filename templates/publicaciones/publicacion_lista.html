@@ -1,0 +1,40 @@
+{%extends "base.html"%}
+{% load pagination_tags %}
+{%load comments%}
+{%block title%}Publicaciones{%endblock%}
+{%block extraheader%}
+{%endblock%}
+
+{%block contenido%}
+    <div class="container" style ="height:50px !important;">
+        <br>
+        <div id="title-container-interna">
+        <div id="title-menu-padre">Publicaciones</div>
+        </div>
+    </div>
+    <div class="filtro-publicacion">
+        <b>Filtrar por </b> | <a href="">Adquisiciones CEDOC</a> | <a href="">Publicaciones ADDAC</a>
+    </div>
+    <div class="filtro-publicacion">
+        <b>Organizar por </b> | <a href="">Boletines</a> | <a href="">Experiencias</a>  | <a href="">Historias de Exito</a>  | <a href="">Revistas</a>  | <a href="">Libros</a>
+    </div>
+    <div id="body-text">
+    {% autopaginate publicacion 8%}
+    {%for pub in publicacion%}
+    <div class="elemento-lista">
+        <div class="thumb-noticia-index" style="height:110px !important; width:100px !important;"><a href="/publicaciones/{{pub.slug}}"><img class="izq"  src="{{pub.imagen.url_90x110}}"  alt="thumb"/></a></div>
+        <div class="extra-noticia" style="padding:3px 15px 5px 5px; width:280px !important; background:#f2eaca;">
+            <i><a href="/publicaciones/tipo/{{pub.tipo}}">{{pub.get_tipo_display}}</a></i> |
+            <i>{{pub.fecha|date:"d M Y"}}</i>
+        </div>
+        <div class="titulo-noticia-index izq" style="width:300px !important;"><a href="/publicaciones/{{pub.slug}}">{{pub.titulo}}</a></div>
+        <div class="izq" style="width:490px !important;"><p>{{pub.descripcion|safe|truncatewords_html:24}}</p></div>
+        <div class="extra-noticia" style="font-size:13px; width:280px !important;">
+            <a href="/publicaciones/tipo/{{pub.tipo}}">Descargar &#187;</a>
+        </div>
+        <div class="separador"></div>
+    </div>
+    {%endfor%}
+    {%paginate%}
+    </div>
+{%endblock%}
