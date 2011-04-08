@@ -2,11 +2,18 @@
 {%block title%}{{pagina_detalle.titulo}}{%endblock%}
 {%block extraheader%}
         <script type="text/javascript" src="/files/js/jquery.pikachoose.full.js"></script>
+        <script type="text/javascript" src="/files/js/jquery.colorbox-min.js"></script>
         <link type="text/css" href="/files/css/bottom.css" rel="stylesheet" />
+        <link type="text/css" href="/files/css/colorbox.css" rel="stylesheet" />
         <script language="javascript">
             $(document).ready(
                 function (){
-                    $("#pikame").PikaChoose({carousel:true});
+                    var a = function(self){
+                        self.anchor.colorbox();
+                     };
+                     $("#pikame").PikaChoose({carousel:true, buildFinished:a});
+                    $("#pikame a[rel='galeria']").colorbox();
+
                 });
         </script>
 {%endblock%}
@@ -24,7 +31,7 @@
                          <div class="pikachoose">
                             <ul id="pikame" class="jcarousel-skin-pika">
                             {%for foto in pagina_detalle.galeria%}
-                                <li><a href="#"><img src="{{foto.imagen.url_180x250}}"/></a><span>{{foto.titulo}}</span></li>
+                                <li><a href="{{foto.imagen.url_640x480}}" rel="galeria"><img src="{{foto.imagen.url_180x250}}"/></a><span>{{foto.titulo}}</span></li>
                             {%endfor%}
                             </ul>
                         </div>
