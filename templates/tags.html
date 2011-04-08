@@ -1,0 +1,37 @@
+{%extends "base.html"%}
+{%block extraheader%}
+{%endblock%}
+{%block contenido%}
+                    <div class="container" style ="height:70px !important;">
+                        <br>
+                        <div id="title-container-interna">
+                        <div id="title-menu-padre">TAGS</div>
+                            <h1>Contenidos que contienen la etiqueta: {{tag|upper}}</h1>
+                        </div>
+                    </div>
+          <div id="body-text">
+             <div id="body-right" style="width:100% !important;">
+                <div id="contenidosafe">
+                 <table>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Contenido</th>
+                    </tr>
+                     {% for obj in objects %}
+                    <tr>
+                     {% if obj.object %}
+                     <td>
+                        {{obj.content_type}}
+                    </td>
+                    <td>
+                    <a href="{{obj.object.get_full_url}}">{{obj.object.get_name}}</a>
+                    </td>
+                     {% endif %}
+                     </tr>
+                     {% endfor %}
+                 </table>
+                </div>
+             </div>
+             <div class="espaciador"></div>
+         </div>
+ {%endblock%}

@@ -13,6 +13,7 @@ from addac.paginas.models import Pagina
 from addac.banners.models import Banner
 from addac.publicaciones.models import Publicacion
 from addac.treemenus.models import MenuItem
+from addac.tagging.models import *
 
 def inicio(request):
     noticia = Noticia.objects.filter(tipo = 1).order_by('-fecha', '-id')[:4]
@@ -45,3 +46,8 @@ def pagina(request,slug):
 def busqueda(request):
     q = request.GET.get('q', '')
     return direct_to_template(request, 'busqueda.html', {'q': q})
+
+def tags(request, id):
+    tag = get_object_or_404(Tag, pk=int(id))
+    objects = TaggedItem.objects.filter(tag=tag)
+    return render_to_response('tags.html', RequestContext(request, locals()))
