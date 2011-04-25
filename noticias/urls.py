@@ -1,10 +1,10 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
-from feeds import NoticiasFeed,NoticiasBinacionalFeed
+from feeds import NoticiasFeed
 from models import Noticia
 
 urlpatterns = patterns('noticias.views',
-    #(r'^noticias/feed/$', NoticiasFeed()),
+    (r'^rss/$', NoticiasFeed()),
     #(r'^noticias/binacional/feed/$', NoticiasBinacionalFeed()),
     (r'^noticias/(?P<slug>[-\w]+)/$', 'noticia_detalle'),
     (r'^noticias/$', 'noticia_lista'),

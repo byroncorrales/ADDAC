@@ -200,8 +200,18 @@ margin:10px 10px 20px 10px;
     margin-top:15px;
     padding:15px;
     background:#181818;
-    color:#484848;
+    color:#888888;
     font-size:11px;
+    text-align:center;
+}
+
+#footer a, #footer a:visited{
+    color:#7f752e;
+    font-weight:bold;
+}
+
+#footer a:hover{
+    color:#9c9038;
 }
 
 /*para el slider del index */
