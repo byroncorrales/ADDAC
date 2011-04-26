@@ -88,6 +88,7 @@ class Noticia(models.Model):
 from django.template.loader import render_to_string
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail
+from django.db.models import signals
 class NoticiaModerador(CommentModerator):
     email_notification = True
     auto_moderate_field = 'fecha'
@@ -103,6 +104,11 @@ class NoticiaModerador(CommentModerator):
             "email.txt", {
                 'comment': comment})
         send_mail(subject, body, 'no-reply@addac.org.ni', ['byroncorrales@gmail.com'])
+
+
+signals.post_save.connect(comment_notifier, sender=Comment)
+
+
 try:
     moderator.register(Noticia, NoticiaModerador)
 except AlreadyModerated:
