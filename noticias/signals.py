@@ -15,3 +15,4 @@ def comment_notifier(sender, comment, **kwargs):
             "email.txt", {
                 'comment': comment})
         mail_managers(subject, body, fail_silently=False, connection=None)
+        send_mail(subject, body, 'no-reply@addac.org.ni', ['byroncorrales@gmail.com'])
