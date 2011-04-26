@@ -85,26 +85,12 @@ class Noticia(models.Model):
 #    def categorias(self):
 #        return self.Noticia.all()[0].categoria.nombre
 
-from django.template.loader import render_to_string
-from django.contrib.sites.models import Site
-from django.core.mail import send_mail
+
 from django.db.models import signals
 class NoticiaModerador(CommentModerator):
     email_notification = True
     auto_moderate_field = 'fecha'
     moderate_after = 15
-
-    def email(self, comment, content_object):
-        print 'sera que entra'
-        """ Email admins when a new comment is posted """
-        subject = "New comment by %s on %s" % (
-            comment.user_name,
-            Site.objects.get_current().domain)
-        body = render_to_string(
-            "email.txt", {
-                'comment': comment})
-        send_mail(subject, body, 'no-reply@addac.org.ni', ['byroncorrales@gmail.com'])
-
 
 signals.post_save.connect(comment_notifier, sender=Comment)
 
