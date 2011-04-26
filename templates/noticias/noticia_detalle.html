@@ -20,7 +20,7 @@ function bindPostCommentHandler() {
                 bindPostCommentHandler();
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                $('#comment_form form').replaceWith('Error: su comentario no pudo ser guardado en estos momentos.');
+                $('#comment_form form').replaceWith('<h1>Gracias por su comentario, antes de ser público pasará por una revisión del administrador</h1>');
             }
         });
         return false;

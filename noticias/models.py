@@ -9,6 +9,7 @@ from addac.tagging_autocomplete.models import TagAutocompleteField
 from thumbs import ImageWithThumbsField
 from addac.utils import get_image_path
 add_introspection_rules ([], ["^addac\.tagging_autocomplete\.models\.TagAutocompleteField"])
+from django.contrib.comments.moderation import CommentModerator, moderator,AlreadyModerated
 
 class CategoriaNoticia(models.Model):
     '''Modelo que representa la categorias de las noticias'''
@@ -43,6 +44,7 @@ class Noticia(models.Model):
     contenido = models.TextField('Contenido', blank=True, null=True)
     tags = TagAutocompleteField(help_text='Separar elementos con "," ')
     adjunto = generic.GenericRelation(Adjunto)
+    #habilita_comentario = models.BooleanField(default=True)
 
     imgDir = 'attachments/imagenes'
 
@@ -79,3 +81,14 @@ class Noticia(models.Model):
 
 #    def categorias(self):
 #        return self.Noticia.all()[0].categoria.nombre
+
+class NoticiaModerador(CommentModerator):
+    email_notification = True
+    moderate_after = 15
+    auto_moderate_field = 'fecha'
+
+try:
+    moderator.register(Noticia, NoticiaModerador)
+except AlreadyModerated:
+    pass
+
