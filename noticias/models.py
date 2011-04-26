@@ -10,6 +10,8 @@ from thumbs import ImageWithThumbsField
 from addac.utils import get_image_path
 add_introspection_rules ([], ["^addac\.tagging_autocomplete\.models\.TagAutocompleteField"])
 from django.contrib.comments.moderation import CommentModerator, moderator,AlreadyModerated
+from django.contrib.comments.models import Comment
+from django.contrib.comments.signals import comment_was_posted
 
 class CategoriaNoticia(models.Model):
     '''Modelo que representa la categorias de las noticias'''
@@ -92,3 +94,4 @@ try:
 except AlreadyModerated:
     pass
 
+comment_was_posted.connect(comment_notifier, sender=Comment)
