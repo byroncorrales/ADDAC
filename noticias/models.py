@@ -13,7 +13,7 @@ from django.contrib.comments.moderation import CommentModerator, moderator,Alrea
 from django.contrib.comments.models import Comment
 from django.contrib.comments.signals import comment_was_posted
 from addac.noticias.signals import comment_notifier
-
+comment_was_posted.connect(comment_notifier, sender=Comment)
 class CategoriaNoticia(models.Model):
     '''Modelo que representa la categorias de las noticias'''
     nombre = models.CharField('Título', max_length=40, unique=True, blank=True, null=True)
@@ -85,14 +85,27 @@ class Noticia(models.Model):
 #    def categorias(self):
 #        return self.Noticia.all()[0].categoria.nombre
 
+from django.template.loader import render_to_string
+from django.contrib.sites.models import Site
+from django.core.mail import send_mail
 class NoticiaModerador(CommentModerator):
     email_notification = True
-    moderate_after = 15
     auto_moderate_field = 'fecha'
+    moderate_after = 15
 
+    def email(self, comment, content_object):
+        print 'sera que entra'
+        """ Email admins when a new comment is posted """
+        subject = "New comment by %s on %s" % (
+            comment.user_name,
+            Site.objects.get_current().domain)
+        body = render_to_string(
+            "email.txt", {
+                'comment': comment})
+        send_mail(subject, body, 'no-reply@addac.org.ni', ['byroncorrales@gmail.com'])
 try:
     moderator.register(Noticia, NoticiaModerador)
 except AlreadyModerated:
     pass
 
-comment_was_posted.connect(comment_notifier, sender=Comment)
+
