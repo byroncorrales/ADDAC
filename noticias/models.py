@@ -12,7 +12,7 @@ add_introspection_rules ([], ["^addac\.tagging_autocomplete\.models\.TagAutocomp
 from django.contrib.comments.moderation import CommentModerator, moderator,AlreadyModerated
 from django.contrib.comments.models import Comment
 from django.contrib.comments.signals import comment_was_posted
-import signals.py
+import signals
 
 class CategoriaNoticia(models.Model):
     '''Modelo que representa la categorias de las noticias'''
