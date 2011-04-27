@@ -1,0 +1,37 @@
+{%extends "base.html"%}
+{%block title%}{{pagina_detalle.titulo}}{%endblock%}
+{%block extraheader%}
+        <script type="text/javascript" src="/files/js/jquery.pikachoose.full.js"></script>
+        <script type="text/javascript" src="/files/js/jquery.colorbox-min.js"></script>
+        <link type="text/css" href="/files/css/bottom.css" rel="stylesheet" />
+        <link type="text/css" href="/files/css/colorbox.css" rel="stylesheet" />
+        <script language="javascript">
+            $(document).ready(
+                function (){
+                    var a = function(self){
+                        self.anchor.colorbox();
+                     };
+                     $("#pikame").PikaChoose({carousel:true, buildFinished:a});
+                    $("#pikame a[rel='galeria']").colorbox();
+
+                });
+        </script>
+{%endblock%}
+{%block contenido%}
+                    <div class="container" style ="height:70px !important;">
+                        <br>
+                        <div id="title-container-interna">
+                            <h1>Página No Encontrada</h1>
+                        </div>
+                    </div>
+                    <div id="body-text">
+
+                        <div id="body-right" style="width:100% !important;">
+                            <div id="contenidosafe">
+                                <center><a href="/"><img src="/files/404.jpg"></a></center>
+                            </div>
+                        </div>
+                        <div class="espaciador"></div>
+                     {%endif%}
+                    </div>
+ {%endblock%}
